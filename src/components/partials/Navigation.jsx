@@ -2,7 +2,7 @@ import React, { useLayoutEffect } from "react";
 import { BsPersonVcard } from "react-icons/bs";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { BiReceipt } from "react-icons/bi";
-// import { IoBagCheckOutline } from "react-icons/io";
+import { IoBagCheckOutline } from "react-icons/io";
 
 import { Link } from "react-router-dom";
 import { StoreContext } from "../../store/StoreContext";
@@ -62,7 +62,7 @@ const Navigation = ({ menu, submenu = null, val }) => {
           <button className={`${menu === "checkout" ? "bg-[#ffffff]" : ""}`}>
             <div className="flex justify-between items-center w-full">
               <div className="flex gap-3 items-center ">
-                {/* <IoBagCheckOutline className="text-lg" /> Checkout */}
+                <IoBagCheckOutline className="text-lg" /> Checkout
               </div>
             </div>
           </button>

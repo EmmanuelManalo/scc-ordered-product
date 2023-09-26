@@ -272,16 +272,16 @@
   }
 
   .main__grid {
-    @apply grid lg:grid-cols-[200px_1fr] max-h-[calc(100vh_-_80px)] lg:min-h-[calc(100vh_-_80px)] gap-0 lg:gap-8 transition-all;
+    @apply grid lg:grid-cols-[200px_1fr] max-h-[calc(100vh_-_72px)] lg:min-h-[calc(100vh_-_72px)] gap-0 lg:gap-8 transition-all;
   }
   .main__grid aside {
-    @apply absolute lg:static w-60 md:w-64 lg:w-auto z-50  h-full max-h-[calc(100vh_-_80px)] -left-full transition-all;
+    @apply absolute lg:static w-60 md:w-64 lg:w-auto z-50  h-full max-h-[calc(100vh_-_72px)] -left-full transition-all;
   }
   .main__grid aside.open {
     @apply left-0;
   }
   .main__grid main {
-    @apply max-h-[calc(100vh_-_80px)] overflow-y-auto;
+    @apply max-h-[calc(100vh_-_72px)] overflow-y-auto;
   }
   /* .main__grid.open {
     @apply grid-cols-[200px_1fr] overflow-x-hidden;
