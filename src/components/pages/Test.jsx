@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Header from "../partials/Header";
 
 const Test = () => {
   return (
-    <div>Test</div>
-  )
-}
+    <>
+      <Header />
+    </>
+  );
+};
 
-export default Test
+export default Test;
