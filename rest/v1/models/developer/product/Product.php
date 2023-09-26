@@ -22,7 +22,7 @@ class Product
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblClient = "tmv2_client";
+        $this->tblClient = "sscv1_product";
     }
 
     // create
