@@ -247,7 +247,7 @@
 
   .nav__link a,
   .nav__link button {
-    @apply mb-1 w-full flex gap-3 items-center text-white py-1 px-2  rounded-md hover:bg-[#436c8a];
+    @apply mb-1 w-full flex gap-3 items-center text-white py-1 px-2  rounded-md hover:bg-primary;
   }
 
   /* .nav__link a.active,
