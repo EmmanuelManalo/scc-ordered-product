@@ -238,25 +238,25 @@ const ProductTable = ({ setItemEdit }) => {
       />
       {store.isConfirm && (
         <ModalConfirm
-          mysqlApiArchive={`/v2/controllers/developer/settings/users/roles/active.php?rolesId=${id}`}
-          msg={`Are you sure you want to archive this Settings Roles?`}
-          item={dataItem.settings_roles_name}
-          queryKey={"settings-roles"}
+          mysqlApiArchive={`/v1/controllers/developer/product/active.php?productId=${id}`}
+          msg={`Are you sure you want to archive this product?`}
+          item={dataItem.product_name}
+          queryKey={"product"}
         />
       )}
       {store.isRestore && (
         <ModalDeleteAndRestore
           id={id}
           isDel={isDel}
-          mysqlApiDelete={`/v2/controllers/developer/settings/users/roles/roles.php?rolesId=${id}`}
-          mysqlApiRestore={`/v2/controllers/developer/settings/users/roles/active.php?rolesId=${id}`}
+          mysqlApiDelete={`/v1/controllers/developer/product/product.php?productId=${id}`}
+          mysqlApiRestore={`/v1/controllers/developer/product/active.php?productId=${id}`}
           msg={
             isDel
-              ? "Are you sure you want to delete this roles?"
-              : "Are you sure you want to restore this roles?"
+              ? "Are you sure you want to delete this product?"
+              : "Are you sure you want to restore this product?"
           }
-          item={dataItem.settings_roles_name}
-          queryKey={"settings-roles"}
+          item={dataItem.product_name}
+          queryKey={"product"}
         />
       )}
     </>
