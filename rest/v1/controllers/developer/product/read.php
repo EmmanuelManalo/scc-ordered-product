@@ -3,22 +3,20 @@
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$client = new Client($conn);
+$product = new Product($conn);
 // get $_GET data  
 
-
-
-if (array_key_exists("clientId", $_GET)) {
-    $client->client_aid = $_GET['clientId'];
+if (array_key_exists("productId", $_GET)) {
+    $product->product_aid = $_GET['productId'];
     
-    checkId($client->client_aid);
-    $query = checkReadById($client);
+    checkId($product->product_aid);
+    $query = checkReadById($product);
     http_response_code(200);
     getQueriedData($query);
 }
 
 if (empty($_GET)) {
-    $query = checkReadAll($client);
+    $query = checkReadAll($product);
     http_response_code(200);
     getQueriedData($query);
 }

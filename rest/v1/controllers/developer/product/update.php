@@ -3,37 +3,36 @@
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$client = new Client($conn);
+$product = new Product($conn);
 // get $_GET data
 $error = [];
 $returnData = [];
-if (array_key_exists("clientId", $_GET)) {
+if (array_key_exists("productId", $_GET)) {
     // check data
     checkPayload($data);
     // get data
-    $client->client_aid = $_GET['clientId'];
-    $client->client_client_id = strtoupper(checkIndex($data, "client_client_id"));
-    $client->client_name = strtoupper(checkIndex($data, "client_name"));
-    $client->client_description = checkIndex($data, "client_description");
-    $client->client_updated_at = date("Y-m-d H:i:s");
-    checkId($client->client_aid);
+    $product->product_aid = $_GET['productId'];
+    $product->product_name = strtoupper(checkIndex($data, "product_name"));
+    $product->product_quantity = checkIndex($data, "product_quantity");
+    $product->product_updated_at = date("Y-m-d H:i:s");
+    checkId($product->product_aid);
 
-    $client_client_id_old = checkIndex($data, 'client_client_id_old');
+    $product_name_old = checkIndex($data, 'product_name_old');
     // $client_description_old = checkIndex($data, "client_description_old");
 
     // run if old is not equal to new name
-    if ($client_client_id_old !== $client->client_client_id) {
-        isNameExist($client, $client->client_client_id);
+    if (strtolower($product_name_old) !== strtolower($product->product_name)) {
+        isNameExist($product, $product->product_name);
     }
     // 
-    // if ($client_description_old !== $client->$client_description) {
-    //     isNameExist($client, $client->client_description);
+    // if ($client_description_old !== $product->$client_description) {
+    //     isNameExist($product, $product->client_description);
     // }
 
 
     // update
-    $query = checkUpdate($client);
-    returnSuccess($client, "Client", $query);
+    $query = checkUpdate($product);
+    returnSuccess($product, "Client", $query);
 }
 
 // return 404 error if endpoint not available
