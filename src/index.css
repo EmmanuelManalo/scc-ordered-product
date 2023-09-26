@@ -161,9 +161,9 @@
 }
 
 @layer components {
-  .btn {
+  /* .btn {
     @apply flex justify-center items-center px-5 py-2  bg-primary disabled:hover:bg-primary rounded-full text-white transition-all ease-out hover:bg-accent_darker;
-  }
+  } */
 
   .btn--cancel {
     @apply bg-gray-200 hover:bg-gray-300 text-dark;
@@ -250,10 +250,10 @@
     @apply mb-1 w-full flex gap-3 items-center text-white py-1 px-2  rounded-md hover:bg-[#436c8a];
   }
 
-  .nav__link a.active,
+  /* .nav__link a.active,
   .nav__link button.active {
     @apply bg-[#436c8a] text-accent;
-  }
+  } */
 
   /* .nav__link.has__dropdown button.active {
         @apply bg-[#436c8a] text-accent;
@@ -262,10 +262,10 @@
   .nav__link.has__dropdown .dropdown {
     @apply hidden;
   }
-
+  /* 
   .active__submenu {
     @apply !border-accent !rounded-tl-none !rounded-bl-none;
-  }
+  } */
 
   .nav__link.has__dropdown:has(active) > div {
     display: block;
