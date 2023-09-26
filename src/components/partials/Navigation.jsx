@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { StoreContext } from "../../store/StoreContext";
 import { devNavUrl } from "../helpers/functions-general";
 
-const Navigation = ({ menu, submenu = null, val }) => {
+const Navigation = ({ menu }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const urlRolePath = `${devNavUrl}`;
   const ref = React.useRef(null);
@@ -30,7 +30,7 @@ const Navigation = ({ menu, submenu = null, val }) => {
       onScroll={handleScroll}
     >
       <ul className="">
-        <Link className="nav__link">
+        <Link className="nav__link " to={`${urlRolePath}/product`}>
           <button className={`${menu === "product" ? "bg-[#ffffff]" : ""}`}>
             <div className="flex justify-between items-center w-full">
               <div className="flex gap-3 items-center ">
@@ -40,7 +40,7 @@ const Navigation = ({ menu, submenu = null, val }) => {
             </div>
           </button>
         </Link>
-        <Link className="nav__link ">
+        <Link className="nav__link " to={`${urlRolePath}/individual`}>
           <button className={`${menu === "individual" ? "bg-[#ffffff]" : ""}`}>
             <div className="flex justify-between items-center w-full">
               <div className="flex gap-3 items-center ">
