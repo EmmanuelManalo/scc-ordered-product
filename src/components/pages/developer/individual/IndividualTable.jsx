@@ -4,28 +4,27 @@ import { FiArchive, FiEdit3 } from "react-icons/fi";
 import { MdRestore } from "react-icons/md";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { useInView } from "react-intersection-observer";
-// import { StoreContext } from "../../../../../store/StoreContext";
-// import {
-//   setIsAdd,
-//   setIsConfirm,
-//   setIsRestore,
-// } from "../../../../../store/StoreAction";
-// import Searchbar from "../../../../partials/Searchbar";
-// import Footer from "../../../../partials/Footer";
-// import Loadmore from "../../../../partials/Loadmore";
-// import { queryDataInfinite } from "../../../../helpers/queryDataInfinite";
-// import Nodata from "../../../../partials/Nodata";
-// import TableLoading from "../../../../partials/TableLoading";
-// import ServerError from "../../../../partials/ServerError";
-// import ModalConfirm from "../../../../partials/modals/ModalConfirm";
-// import ModalDeleteAndRestore from "../../../../partials/modals/ModalDeleteAndRestore";
-// import Pills from "../../../../partials/Pills";
-// import TableSpinner from "../../../../partials/spinners/TableSpinner";
-// import useQueryData from "../../../../custom-hooks/useQueryData";
-import { getEntitiesCountRecord } from "./functions-entities";
-// import RecordCount from "../../../../partials/RecordCount";
+import {
+  setIsAdd,
+  setIsConfirm,
+  setIsRestore,
+} from "../../../../store/StoreAction";
+import { StoreContext } from "../../../../store/StoreContext";
+import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
+import Loadmore from "../../../partials/Loadmore";
+import Nodata from "../../../partials/Nodata";
+import Pills from "../../../partials/Pills";
+import RecordCount from "../../../partials/RecordCount";
+import Searchbar from "../../../partials/Searchbar";
+import ServerError from "../../../partials/ServerError";
+import TableLoading from "../../../partials/TableLoading";
+import ModalConfirm from "../../../partials/modals/ModalConfirm";
+import ModalDeleteAndRestore from "../../../partials/modals/ModalDeleteAndRestore";
+import TableSpinner from "../../../partials/spinners/TableSpinner";
+import { getIndividualCountRecord } from "./functions-individual";
+import useQueryData from "../../../custom-hooks/useQueryData";
 
-const EntitiesTable = ({ setItemEdit }) => {
+const IndividualTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [dataItem, setData] = React.useState(null);
   const [id, setId] = React.useState(null);
@@ -49,11 +48,11 @@ const EntitiesTable = ({ setItemEdit }) => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["settings-entities", store.isSearch],
+    queryKey: ["individual", store.isSearch],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
-        `/v2/controllers/developer/settings/entities/search.php`, // search endpoint
-        `/v2/controllers/developer/settings/entities/page.php?start=${pageParam}`, // list endpoint // list endpoint
+        `/v1/controllers/developer/individual/search.php`, // search endpoint
+        `/v1/controllers/developer/individual/page.php?start=${pageParam}`, // list endpoint // list endpoint
         store.isSearch, // search boolean
         "post",
         { search: search.current.value }
@@ -67,10 +66,10 @@ const EntitiesTable = ({ setItemEdit }) => {
     refetchOnWindowFocus: true,
   });
 
-  const { data: entities } = useQueryData(
-    `/v2/controllers/developer/settings/entities/entities.php`,
+  const { data: individual } = useQueryData(
+    `/v1/controllers/developer/individual/individual.php`,
     "get",
-    "settings-entities"
+    "individual"
   );
 
   React.useEffect(() => {
@@ -87,21 +86,21 @@ const EntitiesTable = ({ setItemEdit }) => {
 
   const handleArchive = (item) => {
     dispatch(setIsConfirm(true));
-    setId(item.entities_aid);
+    setId(item.individual_aid);
     setData(item);
     setDel(null);
   };
 
   const handleRestore = (item) => {
     dispatch(setIsRestore(true));
-    setId(item.entities_aid);
+    setId(item.individual_aid);
     setData(item);
     setDel(null);
   };
 
   const handleDelete = (item) => {
     dispatch(setIsRestore(true));
-    setId(item.entities_aid);
+    setId(item.individual_aid);
     setData(item);
     setDel(true);
   };
@@ -119,8 +118,8 @@ const EntitiesTable = ({ setItemEdit }) => {
         record={
           store.isSearch ? result?.pages[0].count : result?.pages[0].total
         }
-        status={getEntitiesCountRecord(
-          store.isSearch ? result?.pages[0] : entities
+        status={getIndividualCountRecord(
+          store.isSearch ? result?.pages[0] : individual
         )}
       />
       <div className="table__wrapper relative rounded-md shadow-md overflow-auto mb-8">
@@ -131,8 +130,8 @@ const EntitiesTable = ({ setItemEdit }) => {
             <tr>
               <th>#</th>
               <th>Status</th>
-              <th>ID</th>
-              <th>Description</th>
+              <th>Last Name</th>
+              <th>First Name</th>
               <th className="action lg:hidden"></th>
             </tr>
           </thead>
@@ -160,26 +159,26 @@ const EntitiesTable = ({ setItemEdit }) => {
             {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
                 {page.data.map((item, key) => {
-                  active += item.entities_is_active === 1;
-                  inactive += item.entities_is_active === 0;
+                  active += item.individual_is_active === 1;
+                  inactive += item.individual_is_active === 0;
                   return (
                     <tr key={key}>
                       <td>{counter++}.</td>
                       <td>
-                        {item.entities_is_active === 1 ? (
+                        {item.individual_is_active === 1 ? (
                           <Pills label="Active" tc="text-success" />
                         ) : (
                           <Pills label="Inactive" tc="text-archive" />
                         )}
                       </td>
-                      <td>{item.entities_id}</td>
-                      <td>{item.entities_description}</td>
+                      <td>{item.individual_fname}</td>
+                      <td>{item.individual_fname}</td>
 
                       <td
                         className="table__action top-0 right-5 "
                         data-ellipsis=". . ."
                       >
-                        {item.entities_is_active === 1 ? (
+                        {item.individual_is_active === 1 ? (
                           <ul className=" flex items-center  gap-4 bg-">
                             <li>
                               <button
@@ -245,10 +244,10 @@ const EntitiesTable = ({ setItemEdit }) => {
 
       {store.isConfirm && (
         <ModalConfirm
-          mysqlApiArchive={`/v2/controllers/developer/settings/entities/active.php?entitiesId=${id}`}
-          msg={"Are you sure you want to archive this client entities?"}
-          item={dataItem.entities_id}
-          queryKey={"settings-entities"}
+          mysqlApiArchive={`/v1/controllers/developer/individual/active.php?individualId=${id}`}
+          msg={"Are you sure you want to archive this individual?"}
+          item={dataItem.individual_fname}
+          queryKey={"individual"}
         />
       )}
 
@@ -256,19 +255,19 @@ const EntitiesTable = ({ setItemEdit }) => {
         <ModalDeleteAndRestore
           id={id}
           isDel={isDel}
-          mysqlApiDelete={`/v2/controllers/developer/settings/entities/entities.php?entitiesId=${id}`}
-          mysqlApiRestore={`/v2/controllers/developer/settings/entities/active.php?entitiesId=${id}`}
+          mysqlApiDelete={`/v1/controllers/developer/individual/individual.php?individualId=${id}`}
+          mysqlApiRestore={`/v1/controllers/developer/individual/active.php?individualId=${id}`}
           msg={
             isDel
-              ? "Are you sure you want to delete this client entities?"
-              : "Are you sure you want to restore this client entities?"
+              ? "Are you sure you want to delete this individual?"
+              : "Are you sure you want to restore this individual?"
           }
-          item={dataItem.entities_id}
-          queryKey={"settings-entities"}
+          item={dataItem.individual_fname}
+          queryKey={"individual"}
         />
       )}
     </>
   );
 };
 
-export default EntitiesTable;
+export default IndividualTable;

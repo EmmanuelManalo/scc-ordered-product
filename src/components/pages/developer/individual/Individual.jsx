@@ -1,14 +1,10 @@
 import React from "react";
+import { setIsAdd } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
-// import { StoreContext } from "../../../../../store/StoreContext";
-// import { setIsAdd } from "../../../../../store/StoreAction";
-// import Header from "../../../../partials/Header";
-// import Navigation from "../../../../partials/Navigation";
-// import BreadCrumbs from "../../../../partials/Breadcrumbs";
-// import EntitiesTable from "./EntitiesTable";
-// import ModalAddEntities from "./ModalAddEntities";
-// import ModalValidate from "../../../../partials/modals/ModalValidate";
-// import Toast from "../../../../partials/Toast";
+import BreadCrumbs from "../../../partials/Breadcrumbs";
+import Header from "../../../partials/Header";
+import Navigation from "../../../partials/Navigation";
+import IndividualTable from "./IndividualTable";
 
 const Individual = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -26,26 +22,26 @@ const Individual = () => {
         <aside
           className={`${store.isMenuOpen ? "open " : ""} overflow-y-auto `}
         >
-          <Navigation menu="settings" submenu="settingsEntities" />
+          <Navigation menu="individual" />
         </aside>
         <main className="px-2 lg:pr-10 custom-scroll">
           <BreadCrumbs />
           <div className="flex justify-between items-center my-5">
-            <h1 className="mb-0">Client Entities</h1>
+            <h1 className="mb-0">Individuals</h1>
             <button className="btn btn--accent btn--sm" onClick={handleAdd}>
               Add
             </button>
           </div>
 
-          <EntitiesTable setItemEdit={setItemEdit} />
+          <IndividualTable setItemEdit={setItemEdit} />
         </main>
       </section>
 
-      {store.isAdd && <ModalAddEntities itemEdit={itemEdit} />}
+      {/* {store.isAdd && <ModalAddIndividual itemEdit={itemEdit} />}
       {store.validate && <ModalValidate />}
-      {store.success && <Toast />}
+      {store.success && <Toast />} */}
     </>
   );
 };
 
-export default Entities;
+export default Individual;
