@@ -161,9 +161,9 @@
 }
 
 @layer components {
-  /* .btn {
-    @apply flex justify-center items-center px-5 py-2  bg-primary disabled:hover:bg-primary rounded-full text-white transition-all ease-out hover:bg-accent_darker;
-  } */
+  .btn {
+    @apply flex justify-center items-center px-5 py-2  bg-primary disabled:hover:bg-primary rounded-full text-white transition-all ease-out hover:bg-primary/90;
+  }
 
   .btn--cancel {
     @apply bg-gray-200 hover:bg-gray-300 text-dark;
