@@ -4,9 +4,9 @@ import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { BiReceipt } from "react-icons/bi";
 // import { IoBagCheckOutline } from "react-icons/io";
 
-import { devNavUrl } from "../helpers/functions-general";
-import { StoreContext } from "../../store/StoreContext";
 import { Link } from "react-router-dom";
+import { StoreContext } from "../../store/StoreContext";
+import { devNavUrl } from "../helpers/functions-general";
 
 const Navigation = ({ menu, submenu = null, val }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -30,7 +30,7 @@ const Navigation = ({ menu, submenu = null, val }) => {
       onScroll={handleScroll}
     >
       <ul className="">
-        <Link className="nav__link has__dropdown">
+        <Link className="nav__link">
           <button className={`${menu === "product" ? "bg-[#ffffff]" : ""}`}>
             <div className="flex justify-between items-center w-full">
               <div className="flex gap-3 items-center ">
@@ -40,8 +40,8 @@ const Navigation = ({ menu, submenu = null, val }) => {
             </div>
           </button>
         </Link>
-        <Link className="nav__link  has__dropdown">
-          <button className={`${menu === "timeEntry" ? "bg-[#ffffff]" : ""}`}>
+        <Link className="nav__link ">
+          <button className={`${menu === "individual" ? "bg-[#ffffff]" : ""}`}>
             <div className="flex justify-between items-center w-full">
               <div className="flex gap-3 items-center ">
                 <BsPersonVcard className="text-lg" /> Individual
@@ -50,10 +50,7 @@ const Navigation = ({ menu, submenu = null, val }) => {
           </button>
         </Link>
         <Link className="nav__link" to={`${urlRolePath}/transaction`}>
-          <button
-            className={`${menu === "transaction" ? "bg-[#ffffff]" : ""}`}
-            onClick={() => handleSearchReset()}
-          >
+          <button className={`${menu === "transaction" ? "bg-[#ffffff]" : ""}`}>
             <div className="flex justify-between items-center w-full">
               <div className="flex gap-3 items-center ">
                 <BiReceipt className="text-lg" /> Transaction
@@ -62,10 +59,7 @@ const Navigation = ({ menu, submenu = null, val }) => {
           </button>
         </Link>
         <Link className="nav__link" to={`${urlRolePath}/checkout`}>
-          <button
-            className={`${menu === "checkout" ? "bg-[#ffffff]" : ""}`}
-            onClick={() => handleSearchReset()}
-          >
+          <button className={`${menu === "checkout" ? "bg-[#ffffff]" : ""}`}>
             <div className="flex justify-between items-center w-full">
               <div className="flex gap-3 items-center ">
                 {/* <IoBagCheckOutline className="text-lg" /> Checkout */}
