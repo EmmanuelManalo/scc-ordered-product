@@ -9,7 +9,7 @@ class Database
 
         // Localhost
         $host = "localhost";
-        $dbname = "tmv2";
+        $dbname = "sccv1";
         $username = "root";
         $password = "";
 
