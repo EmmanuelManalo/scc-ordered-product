@@ -1,8 +1,10 @@
 import React, { useLayoutEffect } from "react";
 import { BsPersonVcard } from "react-icons/bs";
-import { MdOutlineProductionQuantityLimits } from "react-icons/md";
+import {
+  MdOutlineProductionQuantityLimits,
+  MdShoppingCartCheckout,
+} from "react-icons/md";
 import { BiReceipt } from "react-icons/bi";
-// import { IoBagCheckOutline } from "react-icons/io";
 
 import { Link } from "react-router-dom";
 import { StoreContext } from "../../store/StoreContext";
@@ -20,18 +22,21 @@ const Navigation = ({ menu }) => {
 
   React.useEffect(() => {
     const nav = document.querySelector(".navigation").pageYOffset;
-    console.log(nav);
   }, []);
 
   return (
     <div
-      className="navigation px-2 py-4 bg-gray-300 h-full custom__scroll overflow-y-auto"
+      className="navigation bg-gray-300 h-full custom__scroll overflow-y-auto"
       ref={ref}
       onScroll={handleScroll}
     >
       <ul className="">
         <Link className="nav__link " to={`${urlRolePath}/product`}>
-          <button className={`${menu === "product" ? "bg-[#ffffff]" : ""}`}>
+          <button
+            className={`${
+              menu === "product" ? "bg-[#ffffff] text-primary" : ""
+            }`}
+          >
             <div className="flex justify-between items-center w-full">
               <div className="flex gap-3 items-center ">
                 <MdOutlineProductionQuantityLimits className="text-lg" />{" "}
@@ -41,7 +46,11 @@ const Navigation = ({ menu }) => {
           </button>
         </Link>
         <Link className="nav__link " to={`${urlRolePath}/individual`}>
-          <button className={`${menu === "individual" ? "bg-[#ffffff]" : ""}`}>
+          <button
+            className={`${
+              menu === "individual" ? "bg-[#ffffff] text-primary" : ""
+            }`}
+          >
             <div className="flex justify-between items-center w-full">
               <div className="flex gap-3 items-center ">
                 <BsPersonVcard className="text-lg" /> Individual
@@ -50,7 +59,11 @@ const Navigation = ({ menu }) => {
           </button>
         </Link>
         <Link className="nav__link" to={`${urlRolePath}/transaction`}>
-          <button className={`${menu === "transaction" ? "bg-[#ffffff]" : ""}`}>
+          <button
+            className={`${
+              menu === "transaction" ? "bg-[#ffffff] text-primary" : ""
+            }`}
+          >
             <div className="flex justify-between items-center w-full">
               <div className="flex gap-3 items-center ">
                 <BiReceipt className="text-lg" /> Transaction
@@ -59,10 +72,14 @@ const Navigation = ({ menu }) => {
           </button>
         </Link>
         <Link className="nav__link" to={`${urlRolePath}/checkout`}>
-          <button className={`${menu === "checkout" ? "bg-[#ffffff]" : ""}`}>
+          <button
+            className={`${
+              menu === "checkout" ? "bg-[#ffffff] text-primary" : ""
+            }`}
+          >
             <div className="flex justify-between items-center w-full">
               <div className="flex gap-3 items-center ">
-                {/* <IoBagCheckOutline className="text-lg" /> Checkout */}
+                <MdShoppingCartCheckout className="text-lg" /> Checkout
               </div>
             </div>
           </button>
