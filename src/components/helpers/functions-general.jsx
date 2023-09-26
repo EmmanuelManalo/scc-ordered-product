@@ -6,8 +6,8 @@ import { StoreContext } from "../../store/StoreContext";
 // export const imgUrlPathTm = "http://localhost/training/tm-practice/public/img";
 
 // Emms
-export const urlPathTm = "http://localhost/project/scc";
-export const imgUrlPathTm = "http://localhost/project/scc/public/img";
+export const urlPathTm = "http://localhost/project/sccv1";
+export const imgUrlPathTm = "http://localhost/project/sccv1/public/img";
 
 // // Patrick
 // const urlPathTm = `https://tmcrm.frontlinebusiness.com.ph`;
