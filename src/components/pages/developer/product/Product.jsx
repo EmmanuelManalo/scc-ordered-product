@@ -3,9 +3,19 @@ import Header from "../../../partials/Header";
 import Navigation from "../../../partials/Navigation";
 import { StoreContext } from "../../../../store/StoreContext";
 import ProductTable from "./ProductTable";
+import ModalAddProduct from "./ModalAddProduct";
+import { setIsAdd } from "../../../../store/StoreAction";
+import ModalValidate from "../../../partials/modals/ModalValidate";
+import Toast from "../../../partials/Toast";
 
 const Product = () => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const [itemEdit, setItemEdit] = React.useState(null);
+  const handleAdd = () => {
+    setItemEdit(null);
+    dispatch(setIsAdd(true));
+  };
+
   return (
     <>
       <Header />
@@ -18,13 +28,18 @@ const Product = () => {
         <main className="p-3 !pb-6 lg:p-0 lg:pr-10 custom__scroll">
           <div className="flex items-center justify-between py-3 pt-6">
             <h1 className="mb-0">Product</h1>
-            <button className="btn btn-primary btn--sm">Add</button>
+            <button className="btn btn-primary btn--sm" onClick={handleAdd}>
+              Add
+            </button>
           </div>
           <div>
-            <ProductTable />
+            <ProductTable setItemEdit={setItemEdit} />
           </div>
         </main>
       </section>
+      {store.isAdd && <ModalAddProduct itemEdit={itemEdit} />}
+      {store.validate && <ModalValidate />}
+      {store.success && <Toast />}
     </>
   );
 };
