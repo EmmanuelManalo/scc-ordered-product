@@ -5,7 +5,6 @@ import {
   MdShoppingCartCheckout,
 } from "react-icons/md";
 import { BiReceipt } from "react-icons/bi";
-
 import { Link } from "react-router-dom";
 import { StoreContext } from "../../store/StoreContext";
 import { devNavUrl } from "../helpers/functions-general";
