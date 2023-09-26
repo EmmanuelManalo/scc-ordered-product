@@ -5,15 +5,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        accent: "#6ec199",
-        accent_darker: "#508d8e",
-        primary: "#6ec0c1",
-        secondary: "#273272",
-        success: "#188351",
+        // primary: "#0b6351",
+        // secondary: "#002c59",
+        primary: "#00338f",
+        secondary: "#738ec3",
         alert: "#b91c1c",
-        alert_darker: "#a51515",
-        warning: "#f09a02",
-        archive: "#d4c3af	",
+        warning: "#ff7d54",
+        archive: "#d4c3af ",
         dark: "#3a3b36",
       },
       fontFamily: {
