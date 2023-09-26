@@ -23,7 +23,7 @@ const Product = () => {
         <aside
           className={`${store.isMenuOpen ? "open " : ""} overflow-y-auto `}
         >
-          <Navigation />
+          <Navigation menu={`product`} />
         </aside>
         <main className="p-3 !pb-6 lg:p-0 lg:pr-10 custom__scroll">
           <div className="flex items-center justify-between py-3 pt-6">
