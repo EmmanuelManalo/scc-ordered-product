@@ -84,6 +84,7 @@ class Transaction
         try {
             $sql = "select ";
             // $sql .= "* ";
+            $sql .= " transaction_aid, ";
             $sql .= " transaction_product_id, ";
             $sql .= " transaction_individual_id, ";
             $sql .= " transaction_quantity, ";

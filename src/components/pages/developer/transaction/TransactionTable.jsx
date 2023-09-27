@@ -22,6 +22,7 @@ import RecordCount from "../../../partials/RecordCount";
 import Searchbar from "../../../partials/Searchbar";
 import { getTransactionCountRecord } from "./functions-transaction";
 import TableSpinner from "../../../partials/spinners/TableSpinner";
+import Pills from "../../../partials/Pills";
 
 const TransactionTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -69,7 +70,7 @@ const TransactionTable = ({ setItemEdit }) => {
     "get",
     "transaction"
   );
-
+  console.log(result);
   React.useEffect(() => {
     if (inView) {
       setPage((prev) => prev + 1);
@@ -83,21 +84,21 @@ const TransactionTable = ({ setItemEdit }) => {
 
   const handleArchive = (item) => {
     dispatch(setIsConfirm(true));
-    setId(item.product_aid);
+    setId(item.transaction_aid);
     setData(item);
     setDel(null);
   };
 
   const handleRestore = (item) => {
     dispatch(setIsRestore(true));
-    setId(item.product_aid);
+    setId(item.transaction_aid);
     setData(item);
     setDel(null);
   };
 
   const handleDelete = (item) => {
     dispatch(setIsRestore(true));
-    setId(item.product_aid);
+    setId(item.transaction_aid);
     setData(item);
     setDel(true);
   };
