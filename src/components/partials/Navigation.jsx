@@ -17,7 +17,7 @@ const Navigation = ({ menu }) => {
   const handleSearchOff = () => dispatch(setIsSearch(false));
 
   return (
-    <div className=" bg-gray-300 h-full  overflow-y-auto">
+    <div className=" bg-gray-300 h-full overflow-y-auto">
       <ul className="">
         <Link className="nav__link " to={`${urlRolePath}/product`}>
           <button
