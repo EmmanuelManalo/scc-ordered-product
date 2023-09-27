@@ -171,7 +171,7 @@ const IndividualTable = ({ setItemEdit }) => {
                           <Pills label="Inactive" tc="text-archive" />
                         )}
                       </td>
-                      <td>{item.individual_fname}</td>
+                      <td>{item.individual_lname}</td>
                       <td>{item.individual_fname}</td>
 
                       <td
