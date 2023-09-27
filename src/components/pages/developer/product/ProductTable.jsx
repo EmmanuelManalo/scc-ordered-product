@@ -179,7 +179,7 @@ const ProductTable = ({ setItemEdit }) => {
                             <li>
                               <button
                                 className="tooltip"
-                                data-tooltip="Archive"
+                                data-tooltip="Edit"
                                 onClick={() => handleEdit(item)}
                               >
                                 <FiEdit3 />
