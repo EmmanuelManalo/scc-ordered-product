@@ -17,7 +17,7 @@ const Header = () => {
           onClick={handleBurgerBtn}
         ></div>
       )}
-      <header className=" py-3 px-2 lg:px-2 relative z-50 bg-primary">
+      <header className="py-3 px-2 lg:px-2 relative z-50 bg-primary">
         <div className="flex items-center gap-4">
           <div
             className={`toggle__btn lg:hidden ${

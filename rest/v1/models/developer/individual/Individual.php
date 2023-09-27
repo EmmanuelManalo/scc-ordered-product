@@ -17,11 +17,13 @@ class Individual
     public $connection;
     public $lastInsertedId;
     public $tblIndividual;
+    public $tblTransaction;
 
     public function __construct($db)
     {
         $this->connection = $db;
         $this->tblIndividual = "sccv1_individual";
+        $this->tblTransaction = "sccv1_transaction";
     }
 
     // create
@@ -199,6 +201,22 @@ class Individual
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "individual_fname" => "{$this->individual_fname}",
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    // is individualID Exist
+    public function indivIdExist()
+    {
+        try {
+            $sql = "select transaction_individual_id from {$this->tblTransaction} ";
+            $sql .= "where transaction_individual_id = :transaction_individual_id ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "transaction_individual_id" => $this->individual_aid,
             ]);
         } catch (PDOException $ex) {
             $query = false;
