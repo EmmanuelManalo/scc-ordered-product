@@ -17,74 +17,55 @@ const Navigation = ({ menu }) => {
   const handleSearchOff = () => dispatch(setIsSearch(false));
 
   return (
-    <div className=" bg-gray-100 h-full overflow-y-auto">
-      <ul className="">
-        <Link className="nav__link " to={`${urlRolePath}/product`}>
-          <button
-            className={`${
-              menu === "product"
-                ? "bg-[#ffffff] active"
-                : "hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white"
-            }`}
-            onClick={handleSearchOff}
-          >
-            <div className="flex justify-between items-center w-full">
-              <div className="flex gap-3 items-center ">
-                <MdOutlineProductionQuantityLimits className="text-lg" />{" "}
-                Product
-              </div>
+    <div className=" bg-gray-200 h-full overflow-y-auto">
+      <Link className="nav__link " to={`${urlRolePath}/product`}>
+        <button
+          className={`${menu === "product" ? "bg-[#ffffff] active" : ""}`}
+          onClick={handleSearchOff}
+        >
+          <div className="flex justify-between items-center w-full">
+            <div className="flex gap-3 items-center ">
+              <MdOutlineProductionQuantityLimits className="text-lg" /> Product
             </div>
-          </button>
-        </Link>
-        <Link className="nav__link" to={`${urlRolePath}/individual`}>
-          <button
-            className={`${
-              menu === "individual"
-                ? "bg-[#ffffff] active"
-                : "hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white"
-            }`}
-            onClick={handleSearchOff}
-          >
-            <div className="flex justify-between items-center w-full">
-              <div className="flex gap-3 items-center ">
-                <BsPersonVcard className="text-lg" /> Individual
-              </div>
+          </div>
+        </button>
+      </Link>
+      <Link className="nav__link" to={`${urlRolePath}/individual`}>
+        <button
+          className={`${menu === "individual" ? "bg-[#ffffff] active" : ""}`}
+          onClick={handleSearchOff}
+        >
+          <div className="flex justify-between items-center w-full">
+            <div className="flex gap-3 items-center ">
+              <BsPersonVcard className="text-lg" /> Individual
             </div>
-          </button>
-        </Link>
-        <Link className="nav__link" to={`${urlRolePath}/transaction`}>
-          <button
-            className={`${
-              menu === "transaction"
-                ? "bg-[#ffffff] active"
-                : "hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white"
-            }`}
-            onClick={handleSearchOff}
-          >
-            <div className="flex justify-between items-center w-full">
-              <div className="flex gap-3 items-center ">
-                <BiReceipt className="text-lg" /> Transaction
-              </div>
+          </div>
+        </button>
+      </Link>
+      <Link className="nav__link" to={`${urlRolePath}/transaction`}>
+        <button
+          className={`${menu === "transaction" ? "bg-[#ffffff] active" : ""}`}
+          onClick={handleSearchOff}
+        >
+          <div className="flex justify-between items-center w-full">
+            <div className="flex gap-3 items-center ">
+              <BiReceipt className="text-lg" /> Transaction
             </div>
-          </button>
-        </Link>
-        <Link className="nav__link" to={`${urlRolePath}/checkout`}>
-          <button
-            className={`${
-              menu === "checkout"
-                ? "bg-[#ffffff] active"
-                : "hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white"
-            }`}
-            onClick={handleSearchOff}
-          >
-            <div className="flex justify-between items-center w-full">
-              <div className="flex gap-3 items-center ">
-                <MdShoppingCartCheckout className="text-lg" /> Checkout
-              </div>
+          </div>
+        </button>
+      </Link>
+      <Link className="nav__link" to={`${urlRolePath}/checkout`}>
+        <button
+          className={`${menu === "checkout" ? "bg-[#ffffff] active" : ""}`}
+          onClick={handleSearchOff}
+        >
+          <div className="flex justify-between items-center w-full">
+            <div className="flex gap-3 items-center ">
+              <MdShoppingCartCheckout className="text-lg" /> Checkout
             </div>
-          </button>
-        </Link>
-      </ul>
+          </div>
+        </button>
+      </Link>
     </div>
   );
 };
