@@ -11,16 +11,20 @@ import ModalConfirm from "../../../partials/modals/ModalConfirm";
 import ModalDeleteAndRestore from "../../../partials/modals/ModalDeleteAndRestore";
 import TableSpinner from "../../../partials/spinners/TableSpinner";
 import TransactionCount from "./TransactionCount";
+import { StoreContext } from "../../../../store/StoreContext";
+import { useInView } from "react-intersection-observer";
+import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
+import useQueryData from "../../../custom-hooks/useQueryData";
+import { getTransactionCountRecord } from "./functions-transaction";
+import Loadmore from "../../../partials/Loadmore";
 
-const TransactionTable = ({ setItemEdit }) => {
+const TransactionTable = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   // data
   const [dataItem, setData] = React.useState(null);
   const [id, setId] = React.useState(null);
   const [isDel, setDel] = React.useState(false);
   let counter = 1;
-  let active = 0;
-  let inactive = 0;
   // loadmore & search
   const [page, setPage] = React.useState(1);
   const search = React.useRef(null);
@@ -137,8 +141,6 @@ const TransactionTable = ({ setItemEdit }) => {
             {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
                 {page.data.map((item, key) => {
-                  active += item.transaction_is_paid === 1;
-                  inactive += item.transaction_is_paid === 0;
                   return (
                     <tr key={key}>
                       <td>{counter++}.</td>
