@@ -254,9 +254,9 @@
     @apply relative text-primary hover:bg-white;
   }
 
-  /* .nav__link button.active::after {
-    @apply absolute right-0 top-[-3.4rem] w-[1rem] h-full rounded-br-lg content-[""]  bg-white;
-  } */
+  .nav__link button.active::after {
+    @apply absolute right-0 top-[-3.4rem] w-[1rem] h-full rounded-br-lg content-[""];
+  }
 
   /* .nav__link a.active,
   .nav__link button.active {
