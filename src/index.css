@@ -185,6 +185,9 @@
   .tooltip:hover::before {
     @apply opacity-100;
   }
+  .tooltip .slash {
+    @apply relative before:content-[''] before:absolute before:top-1.5 before:-left-0.5 before:w-5 before:rotate-[-35deg] before:h-0.5 before:rounded-sm before:bg-black;
+  }
 
   .tooltip::after {
     @apply content-[attr(data-tooltip)] absolute -top-[20px] text-[10px]  left-1/2  -translate-x-1/2  bg-black  bg-opacity-70 py-[4px] px-1.5 text-white  rounded-md opacity-0 leading-none;
