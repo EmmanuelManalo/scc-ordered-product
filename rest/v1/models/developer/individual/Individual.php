@@ -30,7 +30,6 @@ class Individual
         try {
             $sql = "insert into {$this->tblIndividual} ";
             $sql .= "( individual_fname, ";
-            $sql .= "individual_fname, ";
             $sql .= "individual_lname, ";
             $sql .= "individual_is_active, ";
             $sql .= "individual_created_at, ";
@@ -43,7 +42,6 @@ class Individual
             $sql .= ":individual_updated_at ) ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "individual_fname" => $this->individual_fname,
                 "individual_fname" => $this->individual_fname,
                 "individual_lname" => $this->individual_lname,
                 "individual_is_active" => $this->individual_is_active,
@@ -138,13 +136,11 @@ class Individual
         try {
             $sql = "update {$this->tblIndividual} set ";
             $sql .= "individual_fname = :individual_fname, ";
-            $sql .= "individual_fname = :individual_fname, ";
             $sql .= "individual_lname = :individual_lname, ";
             $sql .= "individual_updated_at = :individual_updated_at ";
             $sql .= "where individual_aid = :individual_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "individual_fname" => $this->individual_fname,
                 "individual_fname" => $this->individual_fname,
                 "individual_lname" => $this->individual_lname,
                 "individual_updated_at" => $this->individual_updated_at,
