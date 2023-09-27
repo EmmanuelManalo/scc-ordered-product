@@ -13,7 +13,7 @@ const Navigation = ({ menu }) => {
   const handleSearchOff = () => dispatch(setIsSearch(false));
 
   return (
-    <div className=" bg-gray-200 h-full overflow-y-auto">
+    <div className=" bg-gray-100 h-full overflow-y-auto">
       <Link className="nav__link " to={`${urlRolePath}/product`}>
         <button
           className={`${
@@ -25,7 +25,7 @@ const Navigation = ({ menu }) => {
         >
           <div className="flex justify-between items-center w-full">
             <div className="flex gap-3 items-center ">
-              <FaShoppingBag className="text-lg" /> Product
+              <FaShoppingBag className="text-[.9rem]" /> Product
             </div>
           </div>
         </button>
@@ -41,7 +41,7 @@ const Navigation = ({ menu }) => {
         >
           <div className="flex justify-between items-center w-full">
             <div className="flex gap-3 items-center ">
-              <FaUserAlt className="text-lg" /> Individual
+              <FaUserAlt className="text-[.9rem]" /> Individual
             </div>
           </div>
         </button>
@@ -57,7 +57,7 @@ const Navigation = ({ menu }) => {
         >
           <div className="flex justify-between items-center w-full">
             <div className="flex gap-3 items-center ">
-              <IoReceiptSharp className="text-lg" /> Transaction
+              <IoReceiptSharp className="text-[.9rem]" /> Transaction
             </div>
           </div>
         </button>
@@ -73,7 +73,7 @@ const Navigation = ({ menu }) => {
         >
           <div className="flex justify-between items-center w-full">
             <div className="flex gap-3 items-center ">
-              <FaShoppingCart className="text-lg" /> Checkout
+              <FaShoppingCart className="text-[.9rem]" /> Checkout
             </div>
           </div>
         </button>
