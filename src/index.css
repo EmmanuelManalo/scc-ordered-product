@@ -254,7 +254,7 @@
   }
 
   .nav__link button.active {
-    @apply relative text-primary hover:bg-white;
+    @apply relative text-primary hover:bg-white py-3;
   }
 
   /* .nav__link button.active::after {
