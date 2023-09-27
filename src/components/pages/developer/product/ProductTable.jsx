@@ -129,7 +129,7 @@ const ProductTable = ({ setItemEdit }) => {
             <tr>
               <th>#</th>
               <th width={"100px"}>Status</th>
-              <th>Name</th>
+              <th width={"100px"}>Name</th>
               <th>Quantity</th>
               <th className="action lg:hidden"></th>
             </tr>
@@ -179,7 +179,7 @@ const ProductTable = ({ setItemEdit }) => {
                             <li>
                               <button
                                 className="tooltip"
-                                data-tooltip="Archive"
+                                data-tooltip="Edit"
                                 onClick={() => handleEdit(item)}
                               >
                                 <FiEdit3 />

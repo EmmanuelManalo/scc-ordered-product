@@ -236,9 +236,10 @@ const TransactionTable = ({ setItemEdit }) => {
       {store.isConfirm && (
         <ModalConfirm
           mysqlApiArchive={`/v1/controllers/developer/transaction/active.php?transactionId=${id}`}
-          msg={`Are you sure you want to archive this transaction?`}
+          msg={`Are you sure you want to pay this transaction?`}
           item={dataItem.transaction_name}
           queryKey={"transaction"}
+          title="Pay"
         />
       )}
       {store.isRestore && (
@@ -250,10 +251,11 @@ const TransactionTable = ({ setItemEdit }) => {
           msg={
             isDel
               ? "Are you sure you want to delete this transaction?"
-              : "Are you sure you want to restore this transaction?"
+              : "Are you sure you want to unpay this transaction?"
           }
           item={dataItem.transaction_name}
           queryKey={"transaction"}
+          transaction={true}
         />
       )}
     </>
