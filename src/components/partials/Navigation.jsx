@@ -17,7 +17,7 @@ const Navigation = ({ menu }) => {
   const handleSearchOff = () => dispatch(setIsSearch(false));
 
   return (
-    <div className="navigation bg-gray-300 h-full custom__scroll overflow-y-auto">
+    <div className=" bg-gray-300 h-full  overflow-y-auto">
       <ul className="">
         <Link className="nav__link " to={`${urlRolePath}/product`}>
           <button
@@ -34,7 +34,7 @@ const Navigation = ({ menu }) => {
             </div>
           </button>
         </Link>
-        <Link className="nav__link " to={`${urlRolePath}/individual`}>
+        <Link className="nav__link" to={`${urlRolePath}/individual`}>
           <button
             className={`${
               menu === "individual" ? "bg-[#ffffff] text-primary" : ""

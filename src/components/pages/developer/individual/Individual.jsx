@@ -1,13 +1,12 @@
 import React from "react";
 import { setIsAdd } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
-import BreadCrumbs from "../../../partials/Breadcrumbs";
 import Header from "../../../partials/Header";
 import Navigation from "../../../partials/Navigation";
+import Toast from "../../../partials/Toast";
+import ModalValidate from "../../../partials/modals/ModalValidate";
 import IndividualTable from "./IndividualTable";
 import ModalAddIndividual from "./ModalAddIndividual";
-import ModalValidate from "../../../partials/modals/ModalValidate";
-import Toast from "../../../partials/Toast";
 
 const Individual = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -28,7 +27,6 @@ const Individual = () => {
           <Navigation menu="individual" />
         </aside>
         <main className="px-2 lg:pr-10 custom-scroll">
-          <BreadCrumbs />
           <div className="flex justify-between items-center my-5">
             <h1 className="mb-0">Individuals</h1>
             <button className="btn btn--accent btn--sm" onClick={handleAdd}>

@@ -247,7 +247,7 @@
 
   .nav__link a,
   .nav__link button {
-    @apply mb-1 w-full flex gap-3 items-center text-dark p-4  hover:bg-secondary hover:text-white;
+    @apply w-full flex gap-3 items-center text-dark p-4  hover:bg-secondary hover:text-white;
   }
 
   /* .nav__link a.active,
