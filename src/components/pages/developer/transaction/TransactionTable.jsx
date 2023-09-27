@@ -197,7 +197,7 @@ const TransactionTable = ({ setItemEdit }) => {
                                   data-tooltip="Unpay"
                                   onClick={() => handleRestore(item)}
                                 >
-                                  <div className="relative before:absolute before:content-['/'] before:-top-1 before:left-1 before:rotate-1">
+                                  <div className="slash">
                                     <TbCurrencyPeso />
                                   </div>
                                 </button>
