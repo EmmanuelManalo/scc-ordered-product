@@ -130,6 +130,7 @@ class Transaction
         try {
             $sql = "select ";
             // $sql .= "* ";
+            $sql .= " transaction_aid, ";
             $sql .= " transaction_product_id, ";
             $sql .= " transaction_individual_id, ";
             $sql .= " transaction_quantity, ";
@@ -150,13 +151,12 @@ class Transaction
             $sql .= "from {$this->tblTransaction} as transaction, ";
             $sql .= " {$this->tblProduct} as product, ";
             $sql .= " {$this->tblIndividual} as individual ";
-            $sql .= " where (((";
-            $sql .= " transaction.transaction_product_id = product.product_aid ";
-            $sql .= " and ";
-            $sql .= " transaction.transaction_individual_id = individual.individual_aid ) ";
-            $sql .= " and product.product_name like :search_product ) ";
-            $sql .= " and individual.individual_fname like :search_individual_fname ";
-            $sql .= " or individual.individual_lname like :search_individual_lname ) ";
+            $sql .= " where ((((";
+            $sql .= " transaction.transaction_product_id = product.product_aid ) ";
+            $sql .= " and transaction.transaction_individual_id = individual.individual_aid ) ";
+            $sql .= " or product.product_name like :search_product ) ";
+            $sql .= " or individual.individual_fname like :search_individual_fname  ";
+            $sql .= " and individual.individual_lname like :search_individual_lname ) ";
             $sql .= "order by transaction_is_active desc, ";
             $sql .= "transaction_product_id asc ";
             $query = $this->connection->prepare($sql);
