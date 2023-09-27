@@ -74,7 +74,6 @@ const ProductTable = ({ setItemEdit }) => {
   );
 
   React.useEffect(() => {
-    dispatch(setIsSearch(false));
     if (inView) {
       setPage((prev) => prev + 1);
       fetchNextPage();

@@ -8,33 +8,23 @@ import { BiReceipt } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { StoreContext } from "../../store/StoreContext";
 import { devNavUrl } from "../helpers/functions-general";
+import { setIsSearch } from "../../store/StoreAction";
 
 const Navigation = ({ menu }) => {
-  const { store, dispatch } = React.useContext(StoreContext);
+  const { dispatch } = React.useContext(StoreContext);
   const urlRolePath = `${devNavUrl}`;
-  const ref = React.useRef(null);
 
-  const handleScroll = (e) => {
-    console.log(e.target.scrollTop);
-    dispatch(setNavHeight(e.target.scrollTop));
-  };
-
-  React.useEffect(() => {
-    const nav = document.querySelector(".navigation").pageYOffset;
-  }, []);
+  const handleSearchOff = () => dispatch(setIsSearch(false));
 
   return (
-    <div
-      className="navigation bg-gray-300 h-full custom__scroll overflow-y-auto"
-      ref={ref}
-      onScroll={handleScroll}
-    >
+    <div className="navigation bg-gray-300 h-full custom__scroll overflow-y-auto">
       <ul className="">
         <Link className="nav__link " to={`${urlRolePath}/product`}>
           <button
             className={`${
               menu === "product" ? "bg-[#ffffff] text-primary" : ""
             }`}
+            onClick={handleSearchOff}
           >
             <div className="flex justify-between items-center w-full">
               <div className="flex gap-3 items-center ">
@@ -49,6 +39,7 @@ const Navigation = ({ menu }) => {
             className={`${
               menu === "individual" ? "bg-[#ffffff] text-primary" : ""
             }`}
+            onClick={handleSearchOff}
           >
             <div className="flex justify-between items-center w-full">
               <div className="flex gap-3 items-center ">
@@ -62,6 +53,7 @@ const Navigation = ({ menu }) => {
             className={`${
               menu === "transaction" ? "bg-[#ffffff] text-primary" : ""
             }`}
+            onClick={handleSearchOff}
           >
             <div className="flex justify-between items-center w-full">
               <div className="flex gap-3 items-center ">
@@ -75,6 +67,7 @@ const Navigation = ({ menu }) => {
             className={`${
               menu === "checkout" ? "bg-[#ffffff] text-primary" : ""
             }`}
+            onClick={handleSearchOff}
           >
             <div className="flex justify-between items-center w-full">
               <div className="flex gap-3 items-center ">

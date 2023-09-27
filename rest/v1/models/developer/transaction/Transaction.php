@@ -1,9 +1,10 @@
 <?php
-class Product
+class Transaction
 {
     public $transaction_aid;
     public $transaction_product_id;
     public $transaction_individual_id;
+    public $transaction_quantity;
     public $transaction_is_active;
     public $transaction_created_at;
     public $transaction_updated_at;
@@ -35,11 +36,13 @@ class Product
             $sql = "insert into {$this->tblTransaction} ";
             $sql .= "( transaction_product_id, ";
             $sql .= "transaction_individual_id, ";
+            $sql .= "transaction_quantity, ";
             $sql .= "transaction_is_active, ";
             $sql .= "transaction_created_at, ";
             $sql .= "transaction_updated_at ) values ( ";
             $sql .= ":transaction_product_id, ";
             $sql .= ":transaction_individual_id, ";
+            $sql .= ":transaction_quantity, ";
             $sql .= ":transaction_is_active, ";
             $sql .= ":transaction_created_at, ";
             $sql .= ":transaction_updated_at ) ";
@@ -47,6 +50,7 @@ class Product
             $query->execute([
                 "transaction_product_id" => $this->transaction_product_id,
                 "transaction_individual_id" => $this->transaction_individual_id,
+                "transaction_quantity" => $this->transaction_quantity,
                 "transaction_is_active" => $this->transaction_is_active,
                 "transaction_created_at" => $this->transaction_created_at,
                 "transaction_updated_at" => $this->transaction_updated_at,
@@ -80,7 +84,9 @@ class Product
         try {
             $sql = "select ";
             $sql .= "* ";
-            $sql .= "from {$this->tblTransaction} ";
+            $sql .= "from {$this->tblTransaction} as transaction, ";
+            $sql .= " {$this->tblProduct} as product, ";
+            $sql .= " {$this->tblIndividual} as individual ";
             $sql .= "order by transaction_is_active desc, ";
             $sql .= "transaction_product_id asc ";
             $sql .= "limit :start, ";
@@ -140,12 +146,14 @@ class Product
             $sql = "update {$this->tblTransaction} set ";
             $sql .= "transaction_product_id = :transaction_product_id, ";
             $sql .= "transaction_individual_id = :transaction_individual_id, ";
+            $sql .= "transaction_quantity = :transaction_quantity, ";
             $sql .= "transaction_updated_at = :transaction_updated_at ";
             $sql .= "where transaction_aid = :transaction_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "transaction_product_id" => $this->transaction_product_id,
                 "transaction_individual_id" => $this->transaction_individual_id,
+                "transaction_quantity" => $this->transaction_quantity,
                 "transaction_updated_at" => $this->transaction_updated_at,
                 "transaction_aid" => $this->transaction_aid,
             ]);
