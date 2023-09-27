@@ -19,6 +19,7 @@ import {
 } from "react-icons/md";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { FiArchive, FiEdit3 } from "react-icons/fi";
+import { TbCurrencyPeso } from "react-icons/tb";
 import ServerError from "../../../partials/ServerError";
 import Nodata from "../../../partials/Nodata";
 import TableLoading from "../../../partials/TableLoading";
@@ -74,17 +75,13 @@ const TransactionTable = ({ setItemEdit }) => {
     "get",
     "transaction"
   );
-  console.log(result);
+
   React.useEffect(() => {
     if (inView) {
       setPage((prev) => prev + 1);
       fetchNextPage();
     }
   }, [inView]);
-  //   const handleEdit = (item) => {
-  //     dispatch(setIsAdd(true));
-  //     setItemEdit(item);
-  //   };
 
   const handleArchive = (item) => {
     dispatch(setIsConfirm(true));
@@ -158,14 +155,14 @@ const TransactionTable = ({ setItemEdit }) => {
             {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
                 {page.data.map((item, key) => {
-                  active += item.transaction_is_active === 1;
-                  inactive += item.transaction_is_active === 0;
+                  active += item.transaction_is_paid === 1;
+                  inactive += item.transaction_is_paid === 0;
                   return (
                     <tr key={key}>
                       <td>{counter++}.</td>
                       <td>
-                        {item.transaction_is_active === 1 ? (
-                          <Pills label="Unpaid" tc="text-archive" />
+                        {item.transaction_is_paid === 1 ? (
+                          <Pills label="unpaid" tc="text-archive" />
                         ) : (
                           <Pills label="paid" tc="text-green-600" />
                         )}
@@ -180,7 +177,7 @@ const TransactionTable = ({ setItemEdit }) => {
                         data-ellipsis=". . ."
                       >
                         <ul className=" flex items-center  gap-4 bg-">
-                          {item.transaction_is_active === 1 ? (
+                          {item.transaction_is_paid === 1 ? (
                             <>
                               <li>
                                 <button
@@ -188,7 +185,7 @@ const TransactionTable = ({ setItemEdit }) => {
                                   data-tooltip="Pay"
                                   onClick={() => handleArchive(item)}
                                 >
-                                  <MdOutlineAttachMoney />
+                                  <TbCurrencyPeso />
                                 </button>
                               </li>
                             </>
@@ -200,7 +197,9 @@ const TransactionTable = ({ setItemEdit }) => {
                                   data-tooltip="Unpay"
                                   onClick={() => handleRestore(item)}
                                 >
-                                  <MdOutlineMoneyOffCsred />
+                                  <div className="relative before:absolute before:content-['/'] before:-top-1 before:left-1 before:rotate-1">
+                                    <TbCurrencyPeso />
+                                  </div>
                                 </button>
                               </li>
                             </>
