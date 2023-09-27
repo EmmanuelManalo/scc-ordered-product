@@ -24,6 +24,7 @@ import { FiArchive, FiEdit3 } from "react-icons/fi";
 import ModalConfirm from "../../../partials/modals/ModalConfirm";
 import ModalDeleteAndRestore from "../../../partials/modals/ModalDeleteAndRestore";
 import Pills from "../../../partials/Pills";
+import { pesoSign } from "../../../helpers/functions-general";
 
 const ProductTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -36,8 +37,6 @@ const ProductTable = ({ setItemEdit }) => {
   const { ref, inView } = useInView();
 
   let counter = 1;
-  let active = 0;
-  let inactive = 0;
 
   // use if with loadmore button and search bar
   const {
@@ -157,8 +156,6 @@ const ProductTable = ({ setItemEdit }) => {
             {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
                 {page.data.map((item, key) => {
-                  active += item.product_is_active === 1;
-                  inactive += item.product_is_active === 0;
                   return (
                     <tr key={key}>
                       <td>{counter++}.</td>
@@ -171,7 +168,10 @@ const ProductTable = ({ setItemEdit }) => {
                       </td>
                       <td>{item.product_name}</td>
                       <td>{item.product_quantity}</td>
-                      <td>{item.product_srp}</td>
+                      <td className="flex items-center gap-1">
+                        {pesoSign}
+                        {Number(item.product_srp).toFixed(2)}
+                      </td>
                       <td
                         className="table__action top-0 right-5 "
                         data-ellipsis=". . ."

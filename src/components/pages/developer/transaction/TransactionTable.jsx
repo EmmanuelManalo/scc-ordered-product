@@ -23,6 +23,7 @@ import {
   setIsRestore,
 } from "../../../../store/StoreAction";
 import { FiEdit3 } from "react-icons/fi";
+import { pesoSign } from "../../../helpers/functions-general";
 
 const TransactionTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -169,11 +170,14 @@ const TransactionTable = ({ setItemEdit }) => {
                         {item.individual_fname} {item.individual_lname}
                       </td>
                       <td className="flex items-center gap-1">
-                        <TbCurrencyPeso />
-                        {item.product_srp}
+                        {pesoSign}
+                        {Number(item.product_srp).toFixed(2)}
                       </td>
                       <td>{item.transaction_quantity}</td>
-                      <td>{item.product_srp * item.transaction_quantity}</td>
+                      <td className="flex items-center gap-1">
+                        {pesoSign}
+                        {Number(item.transaction_total).toFixed(2)}
+                      </td>
                       <td
                         className="table__action top-0 right-5 "
                         data-ellipsis=". . ."
