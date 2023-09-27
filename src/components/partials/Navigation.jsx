@@ -18,7 +18,7 @@ const Navigation = ({ menu }) => {
         <button
           className={`${
             menu === "product"
-              ? "bg-[#ffffff] active"
+              ? "bg-[#ffffff] active rounded-tl-full rounded-bl-full"
               : "hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white"
           }`}
           onClick={handleSearchOff}
@@ -34,7 +34,7 @@ const Navigation = ({ menu }) => {
         <button
           className={`${
             menu === "individual"
-              ? "bg-[#ffffff] active"
+              ? "bg-[#ffffff] active rounded-tl-full rounded-bl-full"
               : "hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white"
           }`}
           onClick={handleSearchOff}
@@ -50,7 +50,7 @@ const Navigation = ({ menu }) => {
         <button
           className={`${
             menu === "transaction"
-              ? "bg-[#ffffff] active"
+              ? "bg-[#ffffff] active rounded-tl-full rounded-bl-full"
               : "hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white"
           }`}
           onClick={handleSearchOff}
@@ -66,7 +66,7 @@ const Navigation = ({ menu }) => {
         <button
           className={`${
             menu === "checkout"
-              ? "bg-[#ffffff] active"
+              ? "bg-[#ffffff] active rounded-tl-full rounded-bl-full"
               : "hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white"
           }`}
           onClick={handleSearchOff}
