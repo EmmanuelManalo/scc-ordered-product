@@ -6,10 +6,15 @@ import Toast from "../../../partials/Toast";
 import ModalValidate from "../../../partials/modals/ModalValidate";
 import ModalAddTransaction from "./ModalAddTransaction";
 import TransactionTable from "./TransactionTable";
+import { setIsMenuOpen } from "../../../../store/StoreAction";
 
 const Transaction = () => {
-  const { store } = React.useContext(StoreContext);
+  const { store, dispatch } = React.useContext(StoreContext);
   const [itemEdit, setItemEdit] = React.useState(null);
+
+  React.useEffect(() => {
+    dispatch(setIsMenuOpen(false));
+  }, []);
 
   return (
     <>

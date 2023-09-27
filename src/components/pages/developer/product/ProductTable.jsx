@@ -129,7 +129,7 @@ const ProductTable = ({ setItemEdit }) => {
               <th>#</th>
               <th width={"100px"}>Status</th>
               <th width={"100px"}>Name</th>
-              <th width={"100px"}>Quantity</th>
+              <th width={"100px"}>Qty</th>
               <th>Price</th>
               <th className="action lg:hidden"></th>
             </tr>

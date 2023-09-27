@@ -128,7 +128,7 @@ const TransactionTable = ({ setItemEdit }) => {
               <th width={"100px"}>Product</th>
               <th width={"200px"}>Individual</th>
               <th>SRP</th>
-              <th>Quantity</th>
+              <th>Qty</th>
               <th>Total Amount</th>
               <th className="action lg:hidden"></th>
             </tr>
