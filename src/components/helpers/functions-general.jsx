@@ -31,8 +31,10 @@ export const devNavUrl = "";
 
 export const devKey =
   "$2a$12$47wDvbLInZif/PVS8B6P3.7WxyJvUpBzZAWCsnWJUKq3nrn4qgmeO";
+// export const devKey = "";
 
 export const isDemoMode = 1;
+
 export const pesoSign = <span>&#8369;</span>;
 
 // Copyright year

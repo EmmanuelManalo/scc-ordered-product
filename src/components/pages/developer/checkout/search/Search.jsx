@@ -62,18 +62,15 @@ const Search = ({
                 key={key}
                 onClick={() =>
                   handleClick(
-                    `name`,
-                    1,
-                    // `${item.employee_first_name} ${item.employee_last_name}`,
-                    // item.employee_aid,
+                    `${item.name}`,
+                    item.id,
                     setSearch,
                     setIsSearch,
                     setId
                   )
                 }
               >
-                name
-                {/* {item.employee_first_name} {item.employee_last_name} */}
+                {item.name}
               </button>
             ))
           ) : (

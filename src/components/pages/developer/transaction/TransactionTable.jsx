@@ -1,32 +1,23 @@
-import React from "react";
-import { StoreContext } from "../../../../store/StoreContext";
-import { useInView } from "react-intersection-observer";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
-import useQueryData from "../../../custom-hooks/useQueryData";
-import {
-  setIsAdd,
-  setIsConfirm,
-  setIsRestore,
-} from "../../../../store/StoreAction";
-import ModalDeleteAndRestore from "../../../partials/modals/ModalDeleteAndRestore";
-import ModalConfirm from "../../../partials/modals/ModalConfirm";
-import Loadmore from "../../../partials/Loadmore";
-import {
-  MdOutlineAttachMoney,
-  MdOutlineMoneyOffCsred,
-  MdRestore,
-} from "react-icons/md";
+import React from "react";
+import { MdOutlineAttachMoney, MdOutlineMoneyOffCsred } from "react-icons/md";
 import { RiDeleteBinLine } from "react-icons/ri";
-import { FiArchive, FiEdit3 } from "react-icons/fi";
-import ServerError from "../../../partials/ServerError";
+import { useInView } from "react-intersection-observer";
+import { setIsConfirm, setIsRestore } from "../../../../store/StoreAction";
+import { StoreContext } from "../../../../store/StoreContext";
+import useQueryData from "../../../custom-hooks/useQueryData";
+import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
+import Loadmore from "../../../partials/Loadmore";
 import Nodata from "../../../partials/Nodata";
-import TableLoading from "../../../partials/TableLoading";
+import Pills from "../../../partials/Pills";
 import RecordCount from "../../../partials/RecordCount";
 import Searchbar from "../../../partials/Searchbar";
-import { getTransactionCountRecord } from "./functions-transaction";
+import ServerError from "../../../partials/ServerError";
+import TableLoading from "../../../partials/TableLoading";
+import ModalConfirm from "../../../partials/modals/ModalConfirm";
+import ModalDeleteAndRestore from "../../../partials/modals/ModalDeleteAndRestore";
 import TableSpinner from "../../../partials/spinners/TableSpinner";
-import Pills from "../../../partials/Pills";
+import { getTransactionCountRecord } from "./functions-transaction";
 
 const TransactionTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -74,17 +65,12 @@ const TransactionTable = ({ setItemEdit }) => {
     "get",
     "transaction"
   );
-  console.log(result);
   React.useEffect(() => {
     if (inView) {
       setPage((prev) => prev + 1);
       fetchNextPage();
     }
   }, [inView]);
-  //   const handleEdit = (item) => {
-  //     dispatch(setIsAdd(true));
-  //     setItemEdit(item);
-  //   };
 
   const handleArchive = (item) => {
     dispatch(setIsConfirm(true));

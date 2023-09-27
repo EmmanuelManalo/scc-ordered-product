@@ -640,3 +640,16 @@ function console_log($output, $with_script_tags = true)
     }
     echo $js_code;
 }
+
+// if error
+function resultError($msg)
+{
+    $response = new Response();
+    $error = [];
+    $response->setSuccess(false);
+    $error['error'] = $msg;
+    $error["success"] = false;
+    $response->setData($error);
+    $response->send();
+    exit;
+}
