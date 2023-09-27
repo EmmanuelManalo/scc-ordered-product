@@ -11,7 +11,6 @@ if (array_key_exists("individualId", $_GET)) {
 // check data
 checkPayload($data);
 // get data
-$individual->individual_aid = strtoupper(checkIndex($data, "individual_aid"));
 $individual->individual_fname = checkIndex($data, "individual_fname");
 $individual->individual_lname = checkIndex($data, "individual_lname");
 $individual->individual_is_active = 1;
