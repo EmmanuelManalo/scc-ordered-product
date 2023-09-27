@@ -11,6 +11,13 @@ import ModalConfirm from "../../../partials/modals/ModalConfirm";
 import ModalDeleteAndRestore from "../../../partials/modals/ModalDeleteAndRestore";
 import TableSpinner from "../../../partials/spinners/TableSpinner";
 import TransactionCount from "./TransactionCount";
+import { StoreContext } from "../../../../store/StoreContext";
+import { useInView } from "react-intersection-observer";
+import useQueryData from "../../../custom-hooks/useQueryData";
+import { getTransactionCountRecord } from "./functions-transaction";
+import Loadmore from "../../../partials/Loadmore";
+import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
+import { setIsConfirm, setIsRestore } from "../../../../store/StoreAction";
 
 const TransactionTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -164,10 +171,12 @@ const TransactionTable = ({ setItemEdit }) => {
                               <li>
                                 <button
                                   className="tooltip"
-                                  data-tooltip="Pay"
+                                  data-tooltip="Unpay"
                                   onClick={() => handleArchive(item)}
                                 >
-                                  <TbCurrencyPeso />
+                                  <div className="slash">
+                                    <TbCurrencyPeso />
+                                  </div>
                                 </button>
                               </li>
                             </>
@@ -176,12 +185,10 @@ const TransactionTable = ({ setItemEdit }) => {
                               <li>
                                 <button
                                   className="tooltip"
-                                  data-tooltip="Unpay"
+                                  data-tooltip="Pay"
                                   onClick={() => handleRestore(item)}
                                 >
-                                  <div className="slash">
-                                    <TbCurrencyPeso />
-                                  </div>
+                                  <TbCurrencyPeso />
                                 </button>
                               </li>
                             </>
