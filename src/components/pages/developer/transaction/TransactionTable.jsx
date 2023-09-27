@@ -2,12 +2,18 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
 import { MdOutlineAttachMoney, MdOutlineMoneyOffCsred } from "react-icons/md";
 import { RiDeleteBinLine } from "react-icons/ri";
+<<<<<<< HEAD
 import { useInView } from "react-intersection-observer";
 import { setIsConfirm, setIsRestore } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
 import Loadmore from "../../../partials/Loadmore";
+=======
+import { FiArchive, FiEdit3 } from "react-icons/fi";
+import { TbCurrencyPeso } from "react-icons/tb";
+import ServerError from "../../../partials/ServerError";
+>>>>>>> 6343535a629a11ad8b0a3981e688166b1dd57645
 import Nodata from "../../../partials/Nodata";
 import Pills from "../../../partials/Pills";
 import RecordCount from "../../../partials/RecordCount";
@@ -17,7 +23,12 @@ import TableLoading from "../../../partials/TableLoading";
 import ModalConfirm from "../../../partials/modals/ModalConfirm";
 import ModalDeleteAndRestore from "../../../partials/modals/ModalDeleteAndRestore";
 import TableSpinner from "../../../partials/spinners/TableSpinner";
+<<<<<<< HEAD
 import { getTransactionCountRecord } from "./functions-transaction";
+=======
+import Pills from "../../../partials/Pills";
+import TransactionCount from "./TransactionCount";
+>>>>>>> 6343535a629a11ad8b0a3981e688166b1dd57645
 
 const TransactionTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -101,7 +112,7 @@ const TransactionTable = ({ setItemEdit }) => {
         result={result?.pages}
         isFetching={isFetching}
       />
-      <RecordCount
+      <TransactionCount
         record={
           store.isSearch ? result?.pages[0].count : result?.pages[0].total
         }
@@ -144,14 +155,14 @@ const TransactionTable = ({ setItemEdit }) => {
             {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
                 {page.data.map((item, key) => {
-                  active += item.transaction_is_active === 1;
-                  inactive += item.transaction_is_active === 0;
+                  active += item.transaction_is_paid === 1;
+                  inactive += item.transaction_is_paid === 0;
                   return (
                     <tr key={key}>
                       <td>{counter++}.</td>
                       <td>
-                        {item.transaction_is_active === 1 ? (
-                          <Pills label="Unpaid" tc="text-archive" />
+                        {item.transaction_is_paid === 0 ? (
+                          <Pills label="unpaid" tc="text-archive" />
                         ) : (
                           <Pills label="paid" tc="text-green-600" />
                         )}
@@ -166,7 +177,7 @@ const TransactionTable = ({ setItemEdit }) => {
                         data-ellipsis=". . ."
                       >
                         <ul className=" flex items-center  gap-4 bg-">
-                          {item.transaction_is_active === 1 ? (
+                          {item.transaction_is_paid === 1 ? (
                             <>
                               <li>
                                 <button
@@ -174,7 +185,7 @@ const TransactionTable = ({ setItemEdit }) => {
                                   data-tooltip="Pay"
                                   onClick={() => handleArchive(item)}
                                 >
-                                  <MdOutlineAttachMoney />
+                                  <TbCurrencyPeso />
                                 </button>
                               </li>
                             </>
@@ -186,7 +197,9 @@ const TransactionTable = ({ setItemEdit }) => {
                                   data-tooltip="Unpay"
                                   onClick={() => handleRestore(item)}
                                 >
-                                  <MdOutlineMoneyOffCsred />
+                                  <div className="slash">
+                                    <TbCurrencyPeso />
+                                  </div>
                                 </button>
                               </li>
                             </>

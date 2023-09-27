@@ -19,7 +19,7 @@ if (array_key_exists("transactionId", $_GET)) {
     // check data
     checkPayload($data);
     $transaction->transaction_aid = $_GET['transactionId'];
-    $transaction->transaction_is_active = trim($data["isActive"]);
+    $transaction->transaction_is_paid = trim($data["isActive"]);
     $transaction->transaction_updated_at = date("Y-m-d H:i:s");
     checkId($transaction->transaction_aid);
     $query = checkActive($transaction);

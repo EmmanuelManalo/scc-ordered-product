@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 26, 2023 at 09:35 AM
+-- Generation Time: Sep 27, 2023 at 06:33 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -31,6 +31,7 @@ CREATE TABLE `sccv1_product` (
   `product_aid` int(11) NOT NULL,
   `product_name` varchar(100) NOT NULL,
   `product_quantity` int(11) NOT NULL,
+  `product_srp` varchar(20) NOT NULL,
   `product_is_active` tinyint(1) NOT NULL,
   `product_created_at` datetime NOT NULL,
   `product_updated_at` datetime NOT NULL
@@ -40,8 +41,11 @@ CREATE TABLE `sccv1_product` (
 -- Dumping data for table `sccv1_product`
 --
 
-INSERT INTO `sccv1_product` (`product_aid`, `product_name`, `product_quantity`, `product_is_active`, `product_created_at`, `product_updated_at`) VALUES
-(1, 'apple', 1, 1, '2023-09-26 15:32:44', '2023-09-26 15:32:44');
+INSERT INTO `sccv1_product` (`product_aid`, `product_name`, `product_quantity`, `product_srp`, `product_is_active`, `product_created_at`, `product_updated_at`) VALUES
+(1, 'apples', 1, '', 1, '2023-09-26 15:32:44', '2023-09-27 10:08:32'),
+(2, 'banana', 2, '', 1, '2023-09-26 15:37:59', '2023-09-27 10:14:56'),
+(3, 'chicken', 12, '', 1, '2023-09-27 10:07:40', '2023-09-27 10:07:40'),
+(4, 'try', 1, '', 1, '2023-09-27 10:39:51', '2023-09-27 10:39:51');
 
 --
 -- Indexes for dumped tables
@@ -61,7 +65,7 @@ ALTER TABLE `sccv1_product`
 -- AUTO_INCREMENT for table `sccv1_product`
 --
 ALTER TABLE `sccv1_product`
-  MODIFY `product_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `product_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

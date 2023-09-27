@@ -99,12 +99,14 @@ class Individual
             $sql = "select ";
             $sql .= "* ";
             $sql .= "from {$this->tblIndividual} ";
-            $sql .= "where individual_fname like :search ";
+            $sql .= "where individual_fname like :search_fname ";
+            $sql .= "or individual_lname like :search_lname ";
             $sql .= "order by individual_is_active desc, ";
             $sql .= "individual_fname asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "search" => "%{$this->individual_search}%",
+                "search_fname" => "%{$this->individual_search}%",
+                "search_lname" => "%{$this->individual_search}%",
             ]);
         } catch (PDOException $ex) {
             $query = false;
