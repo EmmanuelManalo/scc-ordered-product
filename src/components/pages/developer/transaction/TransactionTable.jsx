@@ -17,6 +17,7 @@ import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import { getTransactionCountRecord } from "./functions-transaction";
 import Loadmore from "../../../partials/Loadmore";
+import { setIsConfirm, setIsRestore } from "../../../../store/StoreAction";
 
 const TransactionTable = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -115,7 +116,9 @@ const TransactionTable = () => {
               <th width={"100px"}>Status</th>
               <th width={"100px"}>Product</th>
               <th width={"200px"}>Individual</th>
+              <th>SRP</th>
               <th>Quantity</th>
+              <th>Total Amount</th>
               <th className="action lg:hidden"></th>
             </tr>
           </thead>
@@ -156,6 +159,8 @@ const TransactionTable = () => {
                         {item.individual_fname} {item.individual_lname}
                       </td>
                       <td>{item.transaction_quantity}</td>
+                      <td>SRP please</td>
+                      <td>total please</td>
                       <td
                         className="table__action top-0 right-5 "
                         data-ellipsis=". . ."
@@ -219,7 +224,7 @@ const TransactionTable = () => {
       {store.isConfirm && (
         <ModalConfirm
           mysqlApiArchive={`/v1/controllers/developer/transaction/active.php?transactionId=${id}`}
-          msg={`Are you sure you want to pay this transaction?`}
+          msg={`Are you sure you want to unpay this transaction?`}
           item={dataItem.transaction_name}
           queryKey={"transaction"}
           title="Pay"
@@ -234,7 +239,7 @@ const TransactionTable = () => {
           msg={
             isDel
               ? "Are you sure you want to delete this transaction?"
-              : "Are you sure you want to unpay this transaction?"
+              : "Are you sure you want to pay this transaction?"
           }
           item={dataItem.transaction_name}
           queryKey={"transaction"}

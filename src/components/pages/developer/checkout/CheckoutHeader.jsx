@@ -10,11 +10,12 @@ const CheckoutHeader = () => {
   // const handleBurgerBtn = () => dispatch(setIsMenuOpen(!store.isMenuOpen));
   return (
     <>
-      <header className="flex py-4 px-2 lg:px-2 items-center justify-center relative z-50 bg-primary">
-        <div className="flex items-center gap-4">
-          <div className="w-20">
-            <Logo />
-          </div>
+      <header className="flex py-3 px-2 lg:px-2 items-center justify-center relative z-50 bg-primary">
+        <div className="w-[50rem] flex items-center justify-center">
+          <Logo />
+          <p className="pl-5 mb-0 text-white font-semibold ">
+            Sambahayan Consumer Cooperative
+          </p>
         </div>
       </header>
     </>
