@@ -6,7 +6,7 @@ $conn = checkDbConnection();
 // make instance of classes
 $individual = new Individual($conn);
 // get $_GET data
-$error = []; 
+$error = [];
 $returnData = [];
 if (array_key_exists("individualId", $_GET)) {
     // get data

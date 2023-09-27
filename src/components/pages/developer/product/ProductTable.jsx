@@ -127,10 +127,10 @@ const ProductTable = ({ setItemEdit }) => {
           <thead>
             <tr>
               <th>#</th>
-              <th width={"100px"}>Status</th>
-              <th width={"100px"}>Name</th>
-              <th width={"100px"}>Qty</th>
-              <th>Price</th>
+              <th className="w-[5rem]">Status</th>
+              <th className="min-w-[20rem]">Name</th>
+              <th className="text-right min-w-[5rem] ">Price</th>
+              <th className="text-center min-w-[5rem] ">Qty</th>
               <th className="action lg:hidden"></th>
             </tr>
           </thead>
@@ -167,11 +167,10 @@ const ProductTable = ({ setItemEdit }) => {
                         )}
                       </td>
                       <td>{item.product_name}</td>
-                      <td>{item.product_quantity}</td>
-                      <td className="flex items-center gap-1">
-                        {pesoSign}
-                        {Number(item.product_srp).toFixed(2)}
+                      <td className="text-right">
+                        {pesoSign} {Number(item.product_srp).toFixed(2)}
                       </td>
+                      <td className="text-center">{item.product_quantity}</td>
                       <td
                         className="table__action top-0 right-5 "
                         data-ellipsis=". . ."

@@ -127,9 +127,9 @@ const TransactionTable = ({ setItemEdit }) => {
               <th width={"100px"}>Status</th>
               <th width={"100px"}>Product</th>
               <th width={"200px"}>Individual</th>
-              <th>SRP</th>
-              <th>Qty</th>
-              <th>Total Amount</th>
+              <th className="text-right min-w-[5rem] ">SRP</th>
+              <th className="text-center min-w-[5rem] ">Qty</th>
+              <th className="text-right min-w-[5rem] pr-5 ">Total Amount</th>
               <th className="action lg:hidden"></th>
             </tr>
           </thead>
@@ -169,12 +169,14 @@ const TransactionTable = ({ setItemEdit }) => {
                       <td>
                         {item.individual_fname} {item.individual_lname}
                       </td>
-                      <td className="flex items-center gap-1">
+                      <td className="text-right">
                         {pesoSign}
                         {Number(item.product_srp).toFixed(2)}
                       </td>
-                      <td>{item.transaction_quantity}</td>
-                      <td className="flex items-center gap-1">
+                      <td className="text-center">
+                        {item.transaction_quantity}
+                      </td>
+                      <td className="text-right pr-5 ">
                         {pesoSign}
                         {Number(item.transaction_total).toFixed(2)}
                       </td>
