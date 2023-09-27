@@ -1,34 +1,16 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
-import { MdOutlineAttachMoney, MdOutlineMoneyOffCsred } from "react-icons/md";
 import { RiDeleteBinLine } from "react-icons/ri";
-<<<<<<< HEAD
-import { useInView } from "react-intersection-observer";
-import { setIsConfirm, setIsRestore } from "../../../../store/StoreAction";
-import { StoreContext } from "../../../../store/StoreContext";
-import useQueryData from "../../../custom-hooks/useQueryData";
-import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
-import Loadmore from "../../../partials/Loadmore";
-=======
-import { FiArchive, FiEdit3 } from "react-icons/fi";
 import { TbCurrencyPeso } from "react-icons/tb";
-import ServerError from "../../../partials/ServerError";
->>>>>>> 6343535a629a11ad8b0a3981e688166b1dd57645
 import Nodata from "../../../partials/Nodata";
 import Pills from "../../../partials/Pills";
-import RecordCount from "../../../partials/RecordCount";
 import Searchbar from "../../../partials/Searchbar";
 import ServerError from "../../../partials/ServerError";
 import TableLoading from "../../../partials/TableLoading";
 import ModalConfirm from "../../../partials/modals/ModalConfirm";
 import ModalDeleteAndRestore from "../../../partials/modals/ModalDeleteAndRestore";
 import TableSpinner from "../../../partials/spinners/TableSpinner";
-<<<<<<< HEAD
-import { getTransactionCountRecord } from "./functions-transaction";
-=======
-import Pills from "../../../partials/Pills";
 import TransactionCount from "./TransactionCount";
->>>>>>> 6343535a629a11ad8b0a3981e688166b1dd57645
 
 const TransactionTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
