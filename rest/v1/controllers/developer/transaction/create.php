@@ -15,7 +15,7 @@ checkPayload($data);
 $transaction->transaction_product_id = checkIndex($data, "transaction_product_id");
 $transaction->transaction_individual_id = checkIndex($data, "transaction_individual_id");
 $transaction->transaction_quantity = checkIndex($data, "transaction_quantity");
-$transaction->transaction_is_active = 1;
+$transaction->transaction_is_paid = 0;
 $transaction->transaction_created_at = date("Y-m-d H:i:s");
 $transaction->transaction_updated_at = date("Y-m-d H:i:s");
 
