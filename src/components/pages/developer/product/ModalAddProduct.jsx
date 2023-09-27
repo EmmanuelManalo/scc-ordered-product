@@ -50,6 +50,7 @@ const ModalAddProduct = ({ itemEdit }) => {
     product_quantity: itemEdit ? itemEdit.product_quantity : "",
 
     product_name_old: itemEdit ? itemEdit.product_name : "",
+    product_srp_old: itemEdit ? itemEdit.product_srp : "",
   };
 
   const yupSchema = Yup.object({
