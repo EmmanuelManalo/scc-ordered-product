@@ -168,11 +168,11 @@ const TransactionTable = ({ setItemEdit }) => {
                       <td>
                         {item.individual_fname} {item.individual_lname}
                       </td>
-                      <td>{item.transaction_quantity}</td>
                       <td className="flex items-center gap-1">
                         <TbCurrencyPeso />
                         {item.product_srp}
                       </td>
+                      <td>{item.transaction_quantity}</td>
                       <td>{item.product_srp * item.transaction_quantity}</td>
                       <td
                         className="table__action top-0 right-5 "
