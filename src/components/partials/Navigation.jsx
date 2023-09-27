@@ -1,14 +1,10 @@
-import React, { useLayoutEffect } from "react";
-import { BsPersonVcard } from "react-icons/bs";
-import {
-  MdOutlineProductionQuantityLimits,
-  MdShoppingCartCheckout,
-} from "react-icons/md";
-import { BiReceipt } from "react-icons/bi";
+import React from "react";
+import { FaShoppingCart, FaUserAlt, FaShoppingBag } from "react-icons/fa";
+import { IoReceiptSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { setIsSearch } from "../../store/StoreAction";
 import { StoreContext } from "../../store/StoreContext";
 import { devNavUrl } from "../helpers/functions-general";
-import { setIsSearch } from "../../store/StoreAction";
 
 const Navigation = ({ menu }) => {
   const { dispatch } = React.useContext(StoreContext);
@@ -29,7 +25,7 @@ const Navigation = ({ menu }) => {
         >
           <div className="flex justify-between items-center w-full">
             <div className="flex gap-3 items-center ">
-              <MdOutlineProductionQuantityLimits className="text-lg" /> Product
+              <FaShoppingBag className="text-lg" /> Product
             </div>
           </div>
         </button>
@@ -45,7 +41,7 @@ const Navigation = ({ menu }) => {
         >
           <div className="flex justify-between items-center w-full">
             <div className="flex gap-3 items-center ">
-              <BsPersonVcard className="text-lg" /> Individual
+              <FaUserAlt className="text-lg" /> Individual
             </div>
           </div>
         </button>
@@ -61,7 +57,7 @@ const Navigation = ({ menu }) => {
         >
           <div className="flex justify-between items-center w-full">
             <div className="flex gap-3 items-center ">
-              <BiReceipt className="text-lg" /> Transaction
+              <IoReceiptSharp className="text-lg" /> Transaction
             </div>
           </div>
         </button>
@@ -77,7 +73,7 @@ const Navigation = ({ menu }) => {
         >
           <div className="flex justify-between items-center w-full">
             <div className="flex gap-3 items-center ">
-              <MdShoppingCartCheckout className="text-lg" /> Checkout
+              <FaShoppingCart className="text-lg" /> Checkout
             </div>
           </div>
         </button>
