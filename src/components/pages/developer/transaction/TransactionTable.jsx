@@ -1,33 +1,15 @@
-import React from "react";
-import { StoreContext } from "../../../../store/StoreContext";
-import { useInView } from "react-intersection-observer";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
-import useQueryData from "../../../custom-hooks/useQueryData";
-import {
-  setIsAdd,
-  setIsConfirm,
-  setIsRestore,
-} from "../../../../store/StoreAction";
-import ModalDeleteAndRestore from "../../../partials/modals/ModalDeleteAndRestore";
-import ModalConfirm from "../../../partials/modals/ModalConfirm";
-import Loadmore from "../../../partials/Loadmore";
-import {
-  MdOutlineAttachMoney,
-  MdOutlineMoneyOffCsred,
-  MdRestore,
-} from "react-icons/md";
+import React from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
-import { FiArchive, FiEdit3 } from "react-icons/fi";
 import { TbCurrencyPeso } from "react-icons/tb";
-import ServerError from "../../../partials/ServerError";
 import Nodata from "../../../partials/Nodata";
-import TableLoading from "../../../partials/TableLoading";
-import RecordCount from "../../../partials/RecordCount";
-import Searchbar from "../../../partials/Searchbar";
-import { getTransactionCountRecord } from "./functions-transaction";
-import TableSpinner from "../../../partials/spinners/TableSpinner";
 import Pills from "../../../partials/Pills";
+import Searchbar from "../../../partials/Searchbar";
+import ServerError from "../../../partials/ServerError";
+import TableLoading from "../../../partials/TableLoading";
+import ModalConfirm from "../../../partials/modals/ModalConfirm";
+import ModalDeleteAndRestore from "../../../partials/modals/ModalDeleteAndRestore";
+import TableSpinner from "../../../partials/spinners/TableSpinner";
 import TransactionCount from "./TransactionCount";
 
 const TransactionTable = ({ setItemEdit }) => {
@@ -76,7 +58,6 @@ const TransactionTable = ({ setItemEdit }) => {
     "get",
     "transaction"
   );
-
   React.useEffect(() => {
     if (inView) {
       setPage((prev) => prev + 1);

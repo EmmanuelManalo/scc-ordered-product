@@ -5,6 +5,10 @@ import { StoreContext } from "../../store/StoreContext";
 // export const urlPathTm = "http://localhost/training/tm-practice";
 // export const imgUrlPathTm = "http://localhost/training/tm-practice/public/img";
 
+// // cy url
+// export const imgUrlPathTm = "http://localhost/projects/sccv1/public/img";
+// export const urlPathTm = "http://localhost/projects/sccv1";
+
 // Emms
 export const urlPathTm = "http://localhost/project/sccv1";
 export const imgUrlPathTm = "http://localhost/project/sccv1/public/img";
@@ -27,8 +31,10 @@ export const devNavUrl = "";
 
 export const devKey =
   "$2a$12$47wDvbLInZif/PVS8B6P3.7WxyJvUpBzZAWCsnWJUKq3nrn4qgmeO";
+// export const devKey = "";
 
 export const isDemoMode = 1;
+
 export const pesoSign = <span>&#8369;</span>;
 
 // Copyright year
