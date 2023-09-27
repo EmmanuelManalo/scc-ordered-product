@@ -211,8 +211,23 @@ class Product
         }
         return $query;
     }
-    // is SRP Exist
+    // can't edit if SRP Exist at transaction table
     public function srpExist()
+    {
+        try {
+            $sql = "select transaction_product_id from {$this->tblTransaction} ";
+            $sql .= "where transaction_product_id = :transaction_product_id ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "transaction_product_id" => $this->product_aid,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+    // cant't delete if product Exist at transaction 
+    public function productExistAtTransaction()
     {
         try {
             $sql = "select transaction_product_id from {$this->tblTransaction} ";
