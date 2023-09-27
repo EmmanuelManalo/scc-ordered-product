@@ -4,7 +4,7 @@ import Navigation from "../../../partials/Navigation";
 import { StoreContext } from "../../../../store/StoreContext";
 import ProductTable from "./ProductTable";
 import ModalAddProduct from "./ModalAddProduct";
-import { setIsAdd } from "../../../../store/StoreAction";
+import { setIsAdd, setIsMenuOpen } from "../../../../store/StoreAction";
 import ModalValidate from "../../../partials/modals/ModalValidate";
 import Toast from "../../../partials/Toast";
 
@@ -15,7 +15,9 @@ const Product = () => {
     setItemEdit(null);
     dispatch(setIsAdd(true));
   };
-
+  React.useEffect(() => {
+    dispatch(setIsMenuOpen(false));
+  }, []);
   return (
     <>
       <Header />
