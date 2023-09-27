@@ -24,8 +24,8 @@ const Transaction = () => {
         >
           <Navigation menu={`transaction`} />
         </aside>
-        <main className="px-2 lg:p-0 lg:pr-10 custom__scroll">
-          <div className="flex items-center justify-between py-3 pt-6">
+        <main className="px-2 lg:pr-10 custom__scroll">
+          <div className="flex items-center justify-between my-5">
             <h1 className="mb-0">Transaction</h1>
             <button className="btn btn-primary btn--sm" onClick={handleAdd}>
               Add
