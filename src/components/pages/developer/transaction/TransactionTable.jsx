@@ -28,6 +28,7 @@ import Searchbar from "../../../partials/Searchbar";
 import { getTransactionCountRecord } from "./functions-transaction";
 import TableSpinner from "../../../partials/spinners/TableSpinner";
 import Pills from "../../../partials/Pills";
+import TransactionCount from "./TransactionCount";
 
 const TransactionTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -112,7 +113,7 @@ const TransactionTable = ({ setItemEdit }) => {
         result={result?.pages}
         isFetching={isFetching}
       />
-      <RecordCount
+      <TransactionCount
         record={
           store.isSearch ? result?.pages[0].count : result?.pages[0].total
         }
@@ -161,7 +162,7 @@ const TransactionTable = ({ setItemEdit }) => {
                     <tr key={key}>
                       <td>{counter++}.</td>
                       <td>
-                        {item.transaction_is_paid === 1 ? (
+                        {item.transaction_is_paid === 0 ? (
                           <Pills label="unpaid" tc="text-archive" />
                         ) : (
                           <Pills label="paid" tc="text-green-600" />
