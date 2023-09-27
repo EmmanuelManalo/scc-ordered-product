@@ -1,0 +1,24 @@
+import React from "react";
+import { StoreContext } from "../../../../store/StoreContext";
+import Logo from "../../../svg/Logo";
+
+const CheckoutHeader = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
+  // const [avatarShow, setAvatarShow] = React.useState(false);
+
+  // const handleShowAvatar = () => dispatch(setIsAvatar(!store.isAvatar));
+  // const handleBurgerBtn = () => dispatch(setIsMenuOpen(!store.isMenuOpen));
+  return (
+    <>
+      <header className="flex py-4 px-2 lg:px-2 items-center justify-center relative z-50 bg-primary">
+        <div className="flex items-center gap-4">
+          <div className="w-20">
+            <Logo />
+          </div>
+        </div>
+      </header>
+    </>
+  );
+};
+
+export default CheckoutHeader;
