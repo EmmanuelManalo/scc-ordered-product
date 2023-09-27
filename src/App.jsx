@@ -3,9 +3,9 @@ import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Individual from "./components/pages/developer/individual/Individual";
 import Product from "./components/pages/developer/product/product";
-import Transaction from "./components/pages/developer/transaction/transaction";
 import { StoreProvider } from "./store/StoreContext";
 import Checkout from "./components/pages/developer/checkout/Checkout";
+import Transaction from "./components/pages/developer/transaction/Transaction";
 
 function App() {
   const queryClient = new QueryClient();

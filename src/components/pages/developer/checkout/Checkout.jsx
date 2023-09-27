@@ -15,6 +15,7 @@ import ModalValidate from "../../../partials/modals/ModalValidate";
 import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
 import CheckoutHeader from "./CheckoutHeader";
 import Search from "./search/Search";
+import { devApiUrl, pesoSign } from "../../../helpers/functions-general";
 // import * as Yup from "yup";
 
 const Checkout = () => {
@@ -38,7 +39,12 @@ const Checkout = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: (values) => queryData("/v1/dev-client", "post", values),
+    mutationFn: (values) =>
+      queryData(
+        "/v1/controllers/developer/checkout/create.php",
+        "post",
+        values
+      ),
 
     onSuccess: (data) => {
       // Invalidate and refetch
@@ -59,18 +65,19 @@ const Checkout = () => {
 
   const handleSearchModal = () => {
     setIsSearchIndividual(false);
+    setIsSearchProduct(false);
   };
 
   const initVal = {
     searchIndividual: "",
     searchProduct: "",
-    quantity: "",
+    transaction_quantity: "",
   };
 
   const yupSchema = Yup.object({
     searchIndividual: Yup.string().required("Required"),
     searchProduct: Yup.string().required("Required"),
-    quantity: Yup.string().required("Required"),
+    transaction_quantity: Yup.string().required("Required"),
   });
 
   return (
@@ -83,8 +90,24 @@ const Checkout = () => {
             initialValues={initVal}
             validationSchema={yupSchema}
             onSubmit={async (values, { setSubmitting, resetForm }) => {
+              if (dataProduct?.length === 0) {
+                dispatch(setValidate(true));
+                dispatch(setMessage("please select product first"));
+                return;
+              }
+
+              const totalAmount =
+                Number(dataProduct[0]?.product_srp) *
+                Number(values.transaction_quantity);
+
               // mutate data
-              mutation.mutate(values);
+              mutation.mutate({
+                ...values,
+                transaction_product_id: productId,
+                transaction_individual_id: individualId,
+                transaction_total: totalAmount,
+                product: dataProduct[0],
+              });
             }}
           >
             {(props) => {
@@ -96,7 +119,7 @@ const Checkout = () => {
                         label="Individual"
                         name="searchIndividual"
                         disabled={mutation.isLoading}
-                        endpoint={`/v1/dev-client-view/search-employee`}
+                        endpoint={`/v1/controllers/developer/checkout/search-individual.php`}
                         setSearch={setSearchIndividual}
                         setIsSearch={setIsSearchIndividual}
                         handleSearchModal={handleSearchModal}
@@ -107,7 +130,6 @@ const Checkout = () => {
                         loading={loadingIndividual}
                         data={dataIndividual}
                         setId={setIndividualId}
-                        setPrice={setPrice}
                       />
                     </div>
                     <div className="form__wrap">
@@ -115,7 +137,7 @@ const Checkout = () => {
                         label="Product"
                         name="searchProduct"
                         disabled={mutation.isLoading}
-                        endpoint={`/v1/dev-client-view/search-employee`}
+                        endpoint={`/v1/controllers/developer/checkout/search-products.php`}
                         setSearch={setSearchProduct}
                         setIsSearch={setIsSearchProduct}
                         handleSearchModal={handleSearchModal}
@@ -126,7 +148,6 @@ const Checkout = () => {
                         loading={loadingProduct}
                         data={dataProduct}
                         setId={setProductId}
-                        setPrice={setPrice}
                       />
                     </div>
                     <div className="form__wrap">
@@ -134,11 +155,18 @@ const Checkout = () => {
                         label="Quantity"
                         type="text"
                         number="number"
-                        name="quantity"
+                        name="transaction_quantity"
+                        onClick={() => handleSearchModal()}
                         disabled={mutation.isLoading}
                       />
                     </div>
-                    <div className="text-2xl">Total:</div>
+                    <div className="text-2xl">
+                      Total: {pesoSign}{" "}
+                      {dataProduct?.length > 0
+                        ? Number(dataProduct[0]?.product_srp) *
+                          Number(props.values.transaction_quantity)
+                        : "0.00"}
+                    </div>
                     <div className="flex justify-center mt-10 gap-2">
                       <button
                         className="btn btn--primary px-6 py-4"

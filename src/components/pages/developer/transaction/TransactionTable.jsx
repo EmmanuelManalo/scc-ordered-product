@@ -1,43 +1,30 @@
+import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
+import { RiDeleteBinLine } from "react-icons/ri";
+import { TbCurrencyPeso } from "react-icons/tb";
+import Nodata from "../../../partials/Nodata";
+import Pills from "../../../partials/Pills";
+import Searchbar from "../../../partials/Searchbar";
+import ServerError from "../../../partials/ServerError";
+import TableLoading from "../../../partials/TableLoading";
+import ModalConfirm from "../../../partials/modals/ModalConfirm";
+import ModalDeleteAndRestore from "../../../partials/modals/ModalDeleteAndRestore";
+import TableSpinner from "../../../partials/spinners/TableSpinner";
+import TransactionCount from "./TransactionCount";
 import { StoreContext } from "../../../../store/StoreContext";
 import { useInView } from "react-intersection-observer";
-import { useInfiniteQuery } from "@tanstack/react-query";
 import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
 import useQueryData from "../../../custom-hooks/useQueryData";
-import {
-  setIsAdd,
-  setIsConfirm,
-  setIsRestore,
-} from "../../../../store/StoreAction";
-import ModalDeleteAndRestore from "../../../partials/modals/ModalDeleteAndRestore";
-import ModalConfirm from "../../../partials/modals/ModalConfirm";
-import Loadmore from "../../../partials/Loadmore";
-import {
-  MdOutlineAttachMoney,
-  MdOutlineMoneyOffCsred,
-  MdRestore,
-} from "react-icons/md";
-import { RiDeleteBinLine } from "react-icons/ri";
-import { FiArchive, FiEdit3 } from "react-icons/fi";
-import { TbCurrencyPeso } from "react-icons/tb";
-import ServerError from "../../../partials/ServerError";
-import Nodata from "../../../partials/Nodata";
-import TableLoading from "../../../partials/TableLoading";
-import RecordCount from "../../../partials/RecordCount";
-import Searchbar from "../../../partials/Searchbar";
 import { getTransactionCountRecord } from "./functions-transaction";
-import TableSpinner from "../../../partials/spinners/TableSpinner";
-import Pills from "../../../partials/Pills";
+import Loadmore from "../../../partials/Loadmore";
 
-const TransactionTable = ({ setItemEdit }) => {
+const TransactionTable = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   // data
   const [dataItem, setData] = React.useState(null);
   const [id, setId] = React.useState(null);
   const [isDel, setDel] = React.useState(false);
   let counter = 1;
-  let active = 0;
-  let inactive = 0;
   // loadmore & search
   const [page, setPage] = React.useState(1);
   const search = React.useRef(null);
@@ -75,7 +62,6 @@ const TransactionTable = ({ setItemEdit }) => {
     "get",
     "transaction"
   );
-
   React.useEffect(() => {
     if (inView) {
       setPage((prev) => prev + 1);
@@ -112,7 +98,7 @@ const TransactionTable = ({ setItemEdit }) => {
         result={result?.pages}
         isFetching={isFetching}
       />
-      <RecordCount
+      <TransactionCount
         record={
           store.isSearch ? result?.pages[0].count : result?.pages[0].total
         }
@@ -155,13 +141,11 @@ const TransactionTable = ({ setItemEdit }) => {
             {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
                 {page.data.map((item, key) => {
-                  active += item.transaction_is_paid === 1;
-                  inactive += item.transaction_is_paid === 0;
                   return (
                     <tr key={key}>
                       <td>{counter++}.</td>
                       <td>
-                        {item.transaction_is_paid === 1 ? (
+                        {item.transaction_is_paid === 0 ? (
                           <Pills label="unpaid" tc="text-archive" />
                         ) : (
                           <Pills label="paid" tc="text-green-600" />
