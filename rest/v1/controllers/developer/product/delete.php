@@ -5,7 +5,7 @@ $conn = checkDbConnection();
 // make instance of classes
 $product = new Product($conn);
 // get $_GET data
-$error = []; 
+$error = [];
 $returnData = [];
 if (array_key_exists("productId", $_GET)) {
     // get data
