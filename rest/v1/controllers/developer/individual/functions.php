@@ -1,9 +1,8 @@
 <?php
-// Read all
-function checkReadAllDepartmentByIdAndStaffId($object)
+// check name
+function indivIdExist($object)
 {
-    $query = $object->readAllDepartmentByIdAndStaffId();
-    checkQuery($query, "Empty records. (read All Department By Id And Staff Id");
-    return $query;
+    $query = $object->indivIdExist();
+    $count = $query->rowCount();
+    checkExistence($count, "Individual exists at Transaction.");
 }
- 
