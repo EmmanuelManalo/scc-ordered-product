@@ -21,7 +21,7 @@ class Individual
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblIndividual = "sscv1_individual";
+        $this->tblIndividual = "sccv1_individual";
     }
 
     // create
@@ -34,7 +34,6 @@ class Individual
             $sql .= "individual_is_active, ";
             $sql .= "individual_created_at, ";
             $sql .= "individual_updated_at ) values ( ";
-            $sql .= ":individual_fname, ";
             $sql .= ":individual_fname, ";
             $sql .= ":individual_lname, ";
             $sql .= ":individual_is_active, ";

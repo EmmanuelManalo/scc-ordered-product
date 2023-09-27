@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 26, 2023 at 09:59 AM
+-- Generation Time: Sep 27, 2023 at 03:25 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -37,6 +37,13 @@ CREATE TABLE `sccv1_individual` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `sccv1_individual`
+--
+
+INSERT INTO `sccv1_individual` (`individual_aid`, `individual_is_active`, `individual_fname`, `individual_lname`, `individual_created_at`, `individual_updated_at`) VALUES
+(2, 1, 'Emman', 'Manalo', '2023-09-27 09:24:50', '2023-09-27 09:24:50');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -54,7 +61,7 @@ ALTER TABLE `sccv1_individual`
 -- AUTO_INCREMENT for table `sccv1_individual`
 --
 ALTER TABLE `sccv1_individual`
-  MODIFY `individual_aid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `individual_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

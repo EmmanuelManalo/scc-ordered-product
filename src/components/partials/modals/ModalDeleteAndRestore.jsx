@@ -19,6 +19,7 @@ const ModalDeleteAndRestore = ({
   msg,
   item,
   queryKey,
+  transaction = false,
 }) => {
   const { dispatch } = React.useContext(StoreContext);
   const queryClient = useQueryClient();
@@ -38,7 +39,13 @@ const ModalDeleteAndRestore = ({
       if (data.success) {
         dispatch(setSuccess(true));
         dispatch(
-          setMessage(isDel ? `Deleted succesfully.` : "Restored succesfully.")
+          setMessage(
+            isDel
+              ? `Deleted succesfully.`
+              : `${
+                  transaction ? "Unpayed successfully" : "Restored succesfully."
+                }`
+          )
         );
       }
       if (!data.success) {
@@ -70,7 +77,9 @@ const ModalDeleteAndRestore = ({
         >
           <div className="modal__header flex gap-2">
             <AiOutlineQuestionCircle className="fill-primary text-5xl" />
-            <h3 className="mt-3 text-[16px]">{isDel ? "Delete" : "Restore"}</h3>
+            <h3 className="mt-3 text-[16px]">
+              {isDel ? "Delete" : `${transaction ? "Unpay" : "Restore"}`}
+            </h3>
           </div>
           <h3 className="mt-3 text-[14px] mb-0 font-normal ">{msg}</h3>
           <p className="text-primary mt-5 uppercase">{item}</p>

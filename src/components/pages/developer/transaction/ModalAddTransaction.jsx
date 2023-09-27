@@ -4,15 +4,17 @@ import React from "react";
 import { FaTimes } from "react-icons/fa";
 import * as Yup from "yup";
 import {
-    setMessage,
-    setSuccess,
-    setValidate,
+  setIsAdd,
+  setMessage,
+  setSuccess,
+  setValidate,
 } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
-import { InputText } from "../../../helpers/FormInputs";
+import { InputSelect, InputText } from "../../../helpers/FormInputs";
 import { handleEscape } from "../../../helpers/functions-general";
 import { queryData } from "../../../helpers/queryData";
 import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
+import useQueryData from "../../../custom-hooks/useQueryData";
 
 const ModalAddTransaction = ({ itemEdit }) => {
   const { dispatch } = React.useContext(StoreContext);
@@ -42,16 +44,39 @@ const ModalAddTransaction = ({ itemEdit }) => {
     },
   });
 
+  const {
+    loadingProduct,
+    isFetchingProduct,
+    errorProduct,
+    data: product,
+  } = useQueryData(
+    `/v1/controllers/developer/product/product.php`,
+    "get",
+    "product"
+  );
+  const {
+    loadingIndividual,
+    isFetchingIndividual,
+    errorIndividual,
+    data: individual,
+  } = useQueryData(
+    `/v1/controllers/developer/individual/individual.php`,
+    "get",
+    "individual"
+  );
+
   const initVal = {
-    transaction_name: itemEdit ? itemEdit.transaction_name : "",
-    transaction_name: itemEdit ? itemEdit.transaction_name : "",
+    transaction_product_id: itemEdit ? itemEdit.transaction_product_id : "",
+    transaction_individual_id: itemEdit
+      ? itemEdit.transaction_individual_id
+      : "",
     transaction_quantity: itemEdit ? itemEdit.transaction_quantity : "",
 
-    transaction_name_old: itemEdit ? itemEdit.transaction_name : "",
   };
 
   const yupSchema = Yup.object({
-    transaction_name: Yup.string().required("Required"),
+    transaction_product_id: Yup.string().required("Required"),
+    transaction_individual_id: Yup.string().required("Required"),
     transaction_quantity: Yup.string().required("Required"),
   });
 
@@ -67,7 +92,7 @@ const ModalAddTransaction = ({ itemEdit }) => {
           className={`modal__main absolute mx-1 bg-white border border-gray-200 rounded-md py-8 px-5 max-w-[420px] w-full shadow-xl`}
         >
           <div className="modal__header relative">
-            <h3> {itemEdit ? "Update" : "Add"} Product </h3>
+            <h3> {itemEdit ? "Update" : "Add"} Transaction </h3>
             <button className="absolute -top-4 right-0 " onClick={handleClose}>
               <FaTimes className="text-gray-700 text-base" />
             </button>
@@ -86,29 +111,87 @@ const ModalAddTransaction = ({ itemEdit }) => {
                   <Form>
                     <div className="modal__body ">
                       <div className="form__wrap">
-                        <InputText
+                        <InputSelect
                           label="Product"
                           type="text"
-                          number="number"
-                          name="product_name"
+                          name="transaction_product_id"
                           disabled={mutation.isLoading}
-                        />
+                          onChange={(e) => e}
+                        >
+                          {loadingProduct ? (
+                            <option value="" hidden>
+                              Loading..
+                            </option>
+                          ) : errorProduct ? (
+                            <option value="" disabled>
+                              Error
+                            </option>
+                          ) : (
+                            <optgroup label="Select Product">
+                              <option value="" hidden></option>
+                              {product?.data.length > 0 ? (
+                                product?.data.map((item, key) => {
+                                  return (
+                                    <option value={item.product_aid} key={key}>
+                                      {item.product_name}
+                                    </option>
+                                  );
+                                })
+                              ) : (
+                                <option value="" disabled>
+                                  No data
+                                </option>
+                              )}
+                            </optgroup>
+                          )}
+                        </InputSelect>
                       </div>
                       <div className="form__wrap">
-                        <InputText
+                        <InputSelect
                           label="Individual"
                           type="text"
-                          number="number"
-                          name="product_quantity"
+                          name="transaction_individual_id"
                           disabled={mutation.isLoading}
-                        />
+                          onChange={(e) => e}
+                        >
+                          {loadingIndividual ? (
+                            <option value="" hidden>
+                              Loading..
+                            </option>
+                          ) : errorIndividual ? (
+                            <option value="" disabled>
+                              Error
+                            </option>
+                          ) : (
+                            <optgroup label="Select Individual">
+                              <option value="" hidden></option>
+                              {individual?.data.length > 0 ? (
+                                individual?.data.map((item, key) => {
+                                  return (
+                                    <option
+                                      value={item.individual_aid}
+                                      key={key}
+                                    >
+                                      {item.individual_fname}{" "}
+                                      {item.individual_lname}
+                                    </option>
+                                  );
+                                })
+                              ) : (
+                                <option value="" disabled>
+                                  No data
+                                </option>
+                              )}
+                            </optgroup>
+                          )}
+                        </InputSelect>
                       </div>
                       <div className="form__wrap">
                         <InputText
                           label="Quantity"
                           type="text"
                           number="number"
-                          name="product_quantity"
+                          name="transaction_quantity"
                           disabled={mutation.isLoading}
                         />
                       </div>

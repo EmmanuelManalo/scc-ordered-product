@@ -12,7 +12,13 @@ import { handleEscape } from "../../helpers/functions-general";
 import { queryData } from "../../helpers/queryData";
 import ButtonSpinner from "../spinners/ButtonSpinner";
 
-const ModalConfirm = ({ mysqlApiArchive, msg, item, queryKey }) => {
+const ModalConfirm = ({
+  mysqlApiArchive,
+  msg,
+  item,
+  queryKey,
+  title = "Archive",
+}) => {
   const { dispatch } = React.useContext(StoreContext);
   const queryClient = useQueryClient();
 
@@ -25,7 +31,7 @@ const ModalConfirm = ({ mysqlApiArchive, msg, item, queryKey }) => {
 
       if (data.success) {
         dispatch(setSuccess(true));
-        dispatch(setMessage("Archived succesfully."));
+        dispatch(setMessage(`${title} succesfully.`));
       }
       if (!data.success) {
         dispatch(setValidate(true));
@@ -55,7 +61,7 @@ const ModalConfirm = ({ mysqlApiArchive, msg, item, queryKey }) => {
         >
           <div className="modal__header flex gap-2">
             <IoInformationCircle className="fill-primary text-5xl" />
-            <h3 className="mt-3 text-[16px]">Archive </h3>
+            <h3 className="mt-3 text-[16px]">{title} </h3>
           </div>
           <h3 className="mt-3 text-[14px] mb-0 font-normal">{msg}</h3>
           <p className="text-primary mt-5 uppercase">{item}</p>
