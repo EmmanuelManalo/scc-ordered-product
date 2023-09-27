@@ -50,9 +50,9 @@ const Checkout = () => {
         queryKey: ["checkout-list"],
       });
       // show error box
+      setSearchIndividual("");
+      setSearchProduct("");
       if (data.success) {
-        setSearchIndividual("");
-        setSearchProduct("");
         dispatch(setSuccess(true));
         dispatch(setMessage(`Successfully added.`));
       }
