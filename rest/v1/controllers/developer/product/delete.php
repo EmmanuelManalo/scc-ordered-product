@@ -1,4 +1,5 @@
 <?php
+require 'functions.php';
 // check database connection
 $conn = null;
 $conn = checkDbConnection();
@@ -11,6 +12,9 @@ if (array_key_exists("productId", $_GET)) {
     // get data
     $product->product_aid = $_GET['productId'];
     checkId($product->product_aid);
+
+    // Check if product exist at transaction table
+    isProductExistAtTransaction($product);
 
     $query = checkDelete($product);
     returnSuccess($product, "Product", $query);
