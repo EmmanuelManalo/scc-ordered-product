@@ -90,6 +90,7 @@ class Transaction
             $sql .= " transaction_individual_id, ";
             $sql .= " transaction_quantity, ";
             $sql .= " transaction_is_paid, ";
+            $sql .= " transaction_total, ";
             $sql .= " transaction_created_at, ";
             $sql .= " transaction_updated_at, ";
             $sql .= " product_aid, ";
