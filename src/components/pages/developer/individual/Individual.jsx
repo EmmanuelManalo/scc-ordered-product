@@ -5,6 +5,9 @@ import BreadCrumbs from "../../../partials/Breadcrumbs";
 import Header from "../../../partials/Header";
 import Navigation from "../../../partials/Navigation";
 import IndividualTable from "./IndividualTable";
+import ModalAddIndividual from "./ModalAddIndividual";
+import ModalValidate from "../../../partials/modals/ModalValidate";
+import Toast from "../../../partials/Toast";
 
 const Individual = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -37,9 +40,9 @@ const Individual = () => {
         </main>
       </section>
 
-      {/* {store.isAdd && <ModalAddIndividual itemEdit={itemEdit} />}
+      {store.isAdd && <ModalAddIndividual itemEdit={itemEdit} />}
       {store.validate && <ModalValidate />}
-      {store.success && <Toast />} */}
+      {store.success && <Toast />}
     </>
   );
 };
