@@ -52,7 +52,7 @@ const ModalAddTransaction = ({ itemEdit }) => {
   } = useQueryData(
     `/v1/controllers/developer/product/product.php`,
     "get",
-    "transaction"
+    "product"
   );
   const {
     loadingIndividual,
@@ -62,7 +62,7 @@ const ModalAddTransaction = ({ itemEdit }) => {
   } = useQueryData(
     `/v1/controllers/developer/individual/individual.php`,
     "get",
-    "transaction"
+    "individual"
   );
 
   const initVal = {
@@ -72,7 +72,6 @@ const ModalAddTransaction = ({ itemEdit }) => {
       : "",
     transaction_quantity: itemEdit ? itemEdit.transaction_quantity : "",
 
-    transaction_name_old: itemEdit ? itemEdit.transaction_name : "",
   };
 
   const yupSchema = Yup.object({
@@ -93,7 +92,7 @@ const ModalAddTransaction = ({ itemEdit }) => {
           className={`modal__main absolute mx-1 bg-white border border-gray-200 rounded-md py-8 px-5 max-w-[420px] w-full shadow-xl`}
         >
           <div className="modal__header relative">
-            <h3> {itemEdit ? "Update" : "Add"} Product </h3>
+            <h3> {itemEdit ? "Update" : "Add"} Transaction </h3>
             <button className="absolute -top-4 right-0 " onClick={handleClose}>
               <FaTimes className="text-gray-700 text-base" />
             </button>
@@ -128,7 +127,7 @@ const ModalAddTransaction = ({ itemEdit }) => {
                               Error
                             </option>
                           ) : (
-                            <optgroup label="Select Role">
+                            <optgroup label="Select Product">
                               <option value="" hidden></option>
                               {product?.data.length > 0 ? (
                                 product?.data.map((item, key) => {
@@ -164,7 +163,7 @@ const ModalAddTransaction = ({ itemEdit }) => {
                               Error
                             </option>
                           ) : (
-                            <optgroup label="Select Role">
+                            <optgroup label="Select Individual">
                               <option value="" hidden></option>
                               {individual?.data.length > 0 ? (
                                 individual?.data.map((item, key) => {
@@ -192,7 +191,7 @@ const ModalAddTransaction = ({ itemEdit }) => {
                           label="Quantity"
                           type="text"
                           number="number"
-                          name="product_quantity"
+                          name="transaction_quantity"
                           disabled={mutation.isLoading}
                         />
                       </div>

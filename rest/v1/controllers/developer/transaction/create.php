@@ -12,8 +12,8 @@ if (array_key_exists("transactionId", $_GET)) {
 checkPayload($data);
 // get data
 
-$transaction->transaction_product_id = checkId(checkIndex($data, "transaction_product_id"));
-$transaction->transaction_individual_id = checkId(checkIndex($data, "transaction_individual_id"));
+$transaction->transaction_product_id = checkIndex($data, "transaction_product_id");
+$transaction->transaction_individual_id = checkIndex($data, "transaction_individual_id");
 $transaction->transaction_quantity = checkIndex($data, "transaction_quantity");
 $transaction->transaction_is_active = 1;
 $transaction->transaction_created_at = date("Y-m-d H:i:s");
