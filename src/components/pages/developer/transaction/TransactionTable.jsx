@@ -17,9 +17,14 @@ import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import { getTransactionCountRecord } from "./functions-transaction";
 import Loadmore from "../../../partials/Loadmore";
-import { setIsConfirm, setIsRestore } from "../../../../store/StoreAction";
+import {
+  setIsAdd,
+  setIsConfirm,
+  setIsRestore,
+} from "../../../../store/StoreAction";
+import { FiEdit3 } from "react-icons/fi";
 
-const TransactionTable = () => {
+const TransactionTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   // data
   const [dataItem, setData] = React.useState(null);
@@ -69,6 +74,11 @@ const TransactionTable = () => {
       fetchNextPage();
     }
   }, [inView]);
+
+  const handleEdit = (item) => {
+    dispatch(setIsAdd(true));
+    setItemEdit(item);
+  };
 
   const handleArchive = (item) => {
     dispatch(setIsConfirm(true));
@@ -159,8 +169,11 @@ const TransactionTable = () => {
                         {item.individual_fname} {item.individual_lname}
                       </td>
                       <td>{item.transaction_quantity}</td>
-                      <td>SRP please</td>
-                      <td>total please</td>
+                      <td className="flex items-center gap-1">
+                        <TbCurrencyPeso />
+                        {item.product_srp}
+                      </td>
+                      <td>{item.product_srp * item.transaction_quantity}</td>
                       <td
                         className="table__action top-0 right-5 "
                         data-ellipsis=". . ."
@@ -182,6 +195,15 @@ const TransactionTable = () => {
                             </>
                           ) : (
                             <>
+                              <li>
+                                <button
+                                  className="tooltip"
+                                  data-tooltip="edit"
+                                  onClick={() => handleEdit(item)}
+                                >
+                                  <FiEdit3 />
+                                </button>
+                              </li>
                               <li>
                                 <button
                                   className="tooltip"

@@ -94,6 +94,7 @@ class Transaction
             $sql .= " transaction_updated_at, ";
             $sql .= " product_aid, ";
             $sql .= " product_name, ";
+            $sql .= " product_srp, ";
             $sql .= " product_quantity, ";
             $sql .= " product_is_active, ";
             $sql .= " product_created_at, ";

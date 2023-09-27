@@ -250,15 +250,15 @@
 
   .nav__link a,
   .nav__link button {
-    @apply w-full flex gap-3 items-center text-dark p-4  hover:bg-primary hover:text-white;
+    @apply w-full flex gap-3 py-3 items-center text-dark p-4  hover:bg-primary hover:text-white;
   }
 
   .nav__link button.active {
-    @apply relative text-primary hover:bg-white rounded-l-[2rem];
+    @apply relative text-primary hover:bg-white;
   }
 
-  /*.nav__link button.active::after {
-    @apply absolute right-0 top-[-3.4rem] w-[1rem] h-full rounded-br-lg content-[""] bg-gray-200;
+  /* .nav__link button.active::after {
+    @apply absolute right-0 top-[-3.3rem] w-[.75rem] h-full rounded-br-lg content-[""]  bg-gray-300;
   } */
 
   /* .nav__link a.active,
@@ -283,7 +283,7 @@
   }
 
   .main__grid {
-    @apply grid lg:grid-cols-[200px_1fr] max-h-[calc(100vh_-_72px)] lg:min-h-[calc(100vh_-_72px)] gap-0 lg:gap-8 transition-all;
+    @apply grid lg:grid-cols-[160px_1fr] max-h-[calc(100vh_-_72px)] lg:min-h-[calc(100vh_-_72px)] gap-0 lg:gap-8 transition-all;
   }
   .main__grid aside {
     @apply absolute lg:static w-60 md:w-64 lg:w-auto z-50  h-full max-h-[calc(100vh_-_72px)] -left-full transition-all;

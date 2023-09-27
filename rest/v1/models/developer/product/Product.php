@@ -3,6 +3,7 @@ class Product
 {
     public $product_aid;
     public $product_name;
+    public $product_srp;
     public $product_quantity;
     public $product_is_active;
     public $product_created_at;
@@ -30,11 +31,13 @@ class Product
         try {
             $sql = "insert into {$this->tblProduct} ";
             $sql .= "( product_name, ";
+            $sql .= "product_srp, ";
             $sql .= "product_quantity, ";
             $sql .= "product_is_active, ";
             $sql .= "product_created_at, ";
             $sql .= "product_updated_at ) values ( ";
             $sql .= ":product_name, ";
+            $sql .= ":product_srp, ";
             $sql .= ":product_quantity, ";
             $sql .= ":product_is_active, ";
             $sql .= ":product_created_at, ";
@@ -42,6 +45,7 @@ class Product
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "product_name" => $this->product_name,
+                "product_srp" => $this->product_srp,
                 "product_quantity" => $this->product_quantity,
                 "product_is_active" => $this->product_is_active,
                 "product_created_at" => $this->product_created_at,
@@ -135,12 +139,14 @@ class Product
         try {
             $sql = "update {$this->tblProduct} set ";
             $sql .= "product_name = :product_name, ";
+            $sql .= "product_srp = :product_srp, ";
             $sql .= "product_quantity = :product_quantity, ";
             $sql .= "product_updated_at = :product_updated_at ";
             $sql .= "where product_aid = :product_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "product_name" => $this->product_name,
+                "product_srp" => $this->product_srp,
                 "product_quantity" => $this->product_quantity,
                 "product_updated_at" => $this->product_updated_at,
                 "product_aid" => $this->product_aid,

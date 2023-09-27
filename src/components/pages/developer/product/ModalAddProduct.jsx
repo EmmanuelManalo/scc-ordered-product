@@ -46,6 +46,7 @@ const ModalAddProduct = ({ itemEdit }) => {
 
   const initVal = {
     product_name: itemEdit ? itemEdit.product_name : "",
+    product_srp: itemEdit ? itemEdit.product_srp : "",
     product_quantity: itemEdit ? itemEdit.product_quantity : "",
 
     product_name_old: itemEdit ? itemEdit.product_name : "",
@@ -53,6 +54,7 @@ const ModalAddProduct = ({ itemEdit }) => {
 
   const yupSchema = Yup.object({
     product_name: Yup.string().required("Required"),
+    product_srp: Yup.string().required("Required"),
     product_quantity: Yup.string().required("Required"),
   });
 
@@ -91,6 +93,15 @@ const ModalAddProduct = ({ itemEdit }) => {
                           label="Name"
                           type="text"
                           name="product_name"
+                          disabled={mutation.isLoading}
+                        />
+                      </div>
+                      <div className="form__wrap">
+                        <InputText
+                          label="SRP"
+                          type="text"
+                          number="number"
+                          name="product_srp"
                           disabled={mutation.isLoading}
                         />
                       </div>
