@@ -13,6 +13,7 @@ if (array_key_exists("productId", $_GET)) {
     // get data
     $product->product_aid = $_GET['productId'];
     $product->product_name = checkIndex($data, "product_name");
+    $product->product_srp = checkIndex($data, "product_srp");
     $product->product_quantity = checkIndex($data, "product_quantity");
     $product->product_updated_at = date("Y-m-d H:i:s");
     checkId($product->product_aid);
