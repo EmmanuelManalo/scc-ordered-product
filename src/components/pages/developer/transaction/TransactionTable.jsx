@@ -12,7 +12,11 @@ import {
 import ModalDeleteAndRestore from "../../../partials/modals/ModalDeleteAndRestore";
 import ModalConfirm from "../../../partials/modals/ModalConfirm";
 import Loadmore from "../../../partials/Loadmore";
-import { MdRestore } from "react-icons/md";
+import {
+  MdOutlineAttachMoney,
+  MdOutlineMoneyOffCsred,
+  MdRestore,
+} from "react-icons/md";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { FiArchive, FiEdit3 } from "react-icons/fi";
 import ServerError from "../../../partials/ServerError";
@@ -77,10 +81,10 @@ const TransactionTable = ({ setItemEdit }) => {
       fetchNextPage();
     }
   }, [inView]);
-  const handleEdit = (item) => {
-    dispatch(setIsAdd(true));
-    setItemEdit(item);
-  };
+  //   const handleEdit = (item) => {
+  //     dispatch(setIsAdd(true));
+  //     setItemEdit(item);
+  //   };
 
   const handleArchive = (item) => {
     dispatch(setIsConfirm(true));
@@ -126,8 +130,8 @@ const TransactionTable = ({ setItemEdit }) => {
             <tr>
               <th>#</th>
               <th width={"100px"}>Status</th>
-              <th>Product</th>
-              <th>Individual</th>
+              <th width={"100px"}>Product</th>
+              <th width={"200px"}>Individual</th>
               <th>Quantity</th>
               <th className="action lg:hidden"></th>
             </tr>
@@ -161,9 +165,9 @@ const TransactionTable = ({ setItemEdit }) => {
                       <td>{counter++}.</td>
                       <td>
                         {item.transaction_is_active === 1 ? (
-                          <Pills label="Active" />
+                          <Pills label="Unpaid" tc="text-archive" />
                         ) : (
-                          <Pills label="Inactive" tc="text-archive" />
+                          <Pills label="paid" tc="text-green-600" />
                         )}
                       </td>
                       <td>{item.product_name}</td>
@@ -175,49 +179,42 @@ const TransactionTable = ({ setItemEdit }) => {
                         className="table__action top-0 right-5 "
                         data-ellipsis=". . ."
                       >
-                        {item.transaction_is_active === 1 ? (
-                          <ul className=" flex items-center  gap-4 bg-">
-                            <li>
-                              <button
-                                className="tooltip"
-                                data-tooltip="Archive"
-                                onClick={() => handleEdit(item)}
-                              >
-                                <FiEdit3 />
-                              </button>
-                            </li>
-                            <li>
-                              <button
-                                className="tooltip"
-                                data-tooltip="Archive"
-                                onClick={() => handleArchive(item)}
-                              >
-                                <FiArchive />
-                              </button>
-                            </li>
-                          </ul>
-                        ) : (
-                          <ul className="flex items-center gap-4">
-                            <li>
-                              <button
-                                className="tooltip"
-                                data-tooltip="Delete"
-                                onClick={() => handleDelete(item)}
-                              >
-                                <RiDeleteBinLine />
-                              </button>
-                            </li>
-                            <li>
-                              <button
-                                className="tooltip"
-                                data-tooltip="Restore"
-                                onClick={() => handleRestore(item)}
-                              >
-                                <MdRestore />
-                              </button>
-                            </li>
-                          </ul>
-                        )}
+                        <ul className=" flex items-center  gap-4 bg-">
+                          {item.transaction_is_active === 1 ? (
+                            <>
+                              <li>
+                                <button
+                                  className="tooltip"
+                                  data-tooltip="Pay"
+                                  onClick={() => handleArchive(item)}
+                                >
+                                  <MdOutlineAttachMoney />
+                                </button>
+                              </li>
+                            </>
+                          ) : (
+                            <>
+                              <li>
+                                <button
+                                  className="tooltip"
+                                  data-tooltip="Unpay"
+                                  onClick={() => handleRestore(item)}
+                                >
+                                  <MdOutlineMoneyOffCsred />
+                                </button>
+                              </li>
+                            </>
+                          )}
+                          <li>
+                            <button
+                              className="tooltip"
+                              data-tooltip="Delete"
+                              onClick={() => handleDelete(item)}
+                            >
+                              <RiDeleteBinLine />
+                            </button>
+                          </li>
+                        </ul>
                       </td>
                     </tr>
                   );
