@@ -9,6 +9,7 @@ module.exports = {
         // secondary: "#002c59",
         primary: "#00338f",
         secondary: "#738ec3",
+        success: "#188351",
         alert: "#b91c1c",
         warning: "#ff7d54",
         archive: "#d4c3af ",
