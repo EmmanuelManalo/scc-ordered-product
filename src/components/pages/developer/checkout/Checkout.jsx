@@ -34,8 +34,6 @@ const Checkout = () => {
   const [dataProduct, setDataProduct] = React.useState([]);
   const [productId, setProductId] = React.useState("");
 
-  const [price, setPrice] = React.useState(0);
-
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -53,6 +51,8 @@ const Checkout = () => {
       });
       // show error box
       if (data.success) {
+        setSearchIndividual("");
+        setSearchProduct("");
         dispatch(setSuccess(true));
         dispatch(setMessage(`Successfully added.`));
       }
@@ -79,7 +79,6 @@ const Checkout = () => {
     searchProduct: Yup.string().required("Required"),
     transaction_quantity: Yup.string().required("Required"),
   });
-
   return (
     <>
       <CheckoutHeader />
@@ -97,7 +96,7 @@ const Checkout = () => {
               }
 
               const totalAmount =
-                Number(dataProduct[0]?.product_srp) *
+                Number(dataProduct[0]?.price) *
                 Number(values.transaction_quantity);
 
               // mutate data
@@ -108,6 +107,7 @@ const Checkout = () => {
                 transaction_total: totalAmount,
                 product: dataProduct[0],
               });
+              resetForm();
             }}
           >
             {(props) => {
@@ -163,7 +163,7 @@ const Checkout = () => {
                     <div className="text-2xl">
                       Total: {pesoSign}{" "}
                       {dataProduct?.length > 0
-                        ? Number(dataProduct[0]?.product_srp) *
+                        ? Number(dataProduct[0]?.price) *
                           Number(props.values.transaction_quantity)
                         : "0.00"}
                     </div>

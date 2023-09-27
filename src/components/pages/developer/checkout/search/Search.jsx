@@ -2,6 +2,7 @@ import React from "react";
 import { handleClick, handleSearch } from "./functions-checkout-search";
 import { InputSearch } from "../../../../helpers/FormInputs";
 import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
+import { pesoSign } from "../../../../helpers/functions-general";
 
 const Search = ({
   label,
@@ -70,7 +71,9 @@ const Search = ({
                   )
                 }
               >
-                {item.name}
+                {item.name} {item.price !== undefined && pesoSign}
+                {item.price !== undefined &&
+                  ` ${Number(item.price).toFixed(2)}`}
               </button>
             ))
           ) : (

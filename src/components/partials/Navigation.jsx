@@ -20,7 +20,11 @@ const Navigation = ({ menu }) => {
     <div className=" bg-gray-200 h-full overflow-y-auto">
       <Link className="nav__link " to={`${urlRolePath}/product`}>
         <button
-          className={`${menu === "product" ? "bg-[#ffffff] active" : ""}`}
+          className={`${
+            menu === "product"
+              ? "bg-[#ffffff] active"
+              : "hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white"
+          }`}
           onClick={handleSearchOff}
         >
           <div className="flex justify-between items-center w-full">
@@ -32,7 +36,11 @@ const Navigation = ({ menu }) => {
       </Link>
       <Link className="nav__link" to={`${urlRolePath}/individual`}>
         <button
-          className={`${menu === "individual" ? "bg-[#ffffff] active" : ""}`}
+          className={`${
+            menu === "individual"
+              ? "bg-[#ffffff] active"
+              : "hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white"
+          }`}
           onClick={handleSearchOff}
         >
           <div className="flex justify-between items-center w-full">
@@ -44,7 +52,11 @@ const Navigation = ({ menu }) => {
       </Link>
       <Link className="nav__link" to={`${urlRolePath}/transaction`}>
         <button
-          className={`${menu === "transaction" ? "bg-[#ffffff] active" : ""}`}
+          className={`${
+            menu === "transaction"
+              ? "bg-[#ffffff] active"
+              : "hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white"
+          }`}
           onClick={handleSearchOff}
         >
           <div className="flex justify-between items-center w-full">
@@ -56,7 +68,11 @@ const Navigation = ({ menu }) => {
       </Link>
       <Link className="nav__link" to={`${urlRolePath}/checkout`}>
         <button
-          className={`${menu === "checkout" ? "bg-[#ffffff] active" : ""}`}
+          className={`${
+            menu === "checkout"
+              ? "bg-[#ffffff] active"
+              : "hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white"
+          }`}
           onClick={handleSearchOff}
         >
           <div className="flex justify-between items-center w-full">

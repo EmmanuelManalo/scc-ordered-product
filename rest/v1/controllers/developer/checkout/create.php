@@ -49,8 +49,7 @@ if ($qtyTransaction->rowCount() > 0) {
 
 // update if first load
 if ($product != []) {
-    $productQty = checkIndex($product, "product_quantity");
-    $productName = checkIndex($product, "name");
+    $productQty = checkIndex($product, "qty");
 }
 
 $totalQuantity = (int)$productQty - ((int)$transactionQty + (int)$check_out->transaction_quantity);
