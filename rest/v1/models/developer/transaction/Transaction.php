@@ -83,10 +83,31 @@ class Transaction
     {
         try {
             $sql = "select ";
-            $sql .= "* ";
+            // $sql .= "* ";
+            $sql .= " transaction_product_id, ";
+            $sql .= " transaction_individual_id, ";
+            $sql .= " transaction_quantity, ";
+            $sql .= " transaction_is_active, ";
+            $sql .= " transaction_created_at, ";
+            $sql .= " transaction_updated_at, ";
+            $sql .= " product_aid, ";
+            $sql .= " product_name, ";
+            $sql .= " product_quantity, ";
+            $sql .= " product_is_active, ";
+            $sql .= " product_created_at, ";
+            $sql .= " product_updated_at, ";
+            $sql .= " individual_fname, ";
+            $sql .= " individual_lname, ";
+            $sql .= " individual_is_active, ";
+            $sql .= " individual_created_at, ";
+            $sql .= " individual_updated_at ";
             $sql .= "from {$this->tblTransaction} as transaction, ";
             $sql .= " {$this->tblProduct} as product, ";
             $sql .= " {$this->tblIndividual} as individual ";
+            $sql .= " where ";
+            $sql .= " transaction.transaction_product_id = product.product_aid ";
+            $sql .= " and ";
+            $sql .= " transaction.transaction_individual_id = individual.individual_aid ";
             $sql .= "order by transaction_is_active desc, ";
             $sql .= "transaction_product_id asc ";
             $sql .= "limit :start, ";
@@ -107,14 +128,41 @@ class Transaction
     {
         try {
             $sql = "select ";
-            $sql .= "* ";
-            $sql .= "from {$this->tblTransaction} ";
-            $sql .= "where transaction_product_id like :search ";
+            // $sql .= "* ";
+            $sql .= " transaction_product_id, ";
+            $sql .= " transaction_individual_id, ";
+            $sql .= " transaction_quantity, ";
+            $sql .= " transaction_is_active, ";
+            $sql .= " transaction_created_at, ";
+            $sql .= " transaction_updated_at, ";
+            $sql .= " product_aid, ";
+            $sql .= " product_name, ";
+            $sql .= " product_quantity, ";
+            $sql .= " product_is_active, ";
+            $sql .= " product_created_at, ";
+            $sql .= " product_updated_at, ";
+            $sql .= " individual_fname, ";
+            $sql .= " individual_lname, ";
+            $sql .= " individual_is_active, ";
+            $sql .= " individual_created_at, ";
+            $sql .= " individual_updated_at ";
+            $sql .= "from {$this->tblTransaction} as transaction, ";
+            $sql .= " {$this->tblProduct} as product, ";
+            $sql .= " {$this->tblIndividual} as individual ";
+            $sql .= " where (((";
+            $sql .= " transaction.transaction_product_id = product.product_aid ";
+            $sql .= " and ";
+            $sql .= " transaction.transaction_individual_id = individual.individual_aid ) ";
+            $sql .= " and product.product_name like :search_product ) ";
+            $sql .= " and individual.individual_fname like :search_individual_fname ";
+            $sql .= " or individual.individual_lname like :search_individual_lname ) ";
             $sql .= "order by transaction_is_active desc, ";
             $sql .= "transaction_product_id asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "search" => "%{$this->transaction_search}%",
+                "search_product" => "%{$this->transaction_search}%",
+                "search_individual_fname" => "%{$this->transaction_search}%",
+                "search_individual_lname" => "%{$this->transaction_search}%",
             ]);
         } catch (PDOException $ex) {
             $query = false;

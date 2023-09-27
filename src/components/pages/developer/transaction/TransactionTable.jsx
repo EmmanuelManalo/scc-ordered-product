@@ -21,6 +21,7 @@ import TableLoading from "../../../partials/TableLoading";
 import RecordCount from "../../../partials/RecordCount";
 import Searchbar from "../../../partials/Searchbar";
 import { getTransactionCountRecord } from "./functions-transaction";
+import TableSpinner from "../../../partials/spinners/TableSpinner";
 
 const TransactionTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -63,13 +64,8 @@ const TransactionTable = ({ setItemEdit }) => {
     refetchOnWindowFocus: true,
   });
 
-  const { data: product } = useQueryData(
-    `/v1/controllers/developer/product/product.php`,
-    "get",
-    "transaction"
-  );
-  const { data: individual } = useQueryData(
-    `/v1/controllers/developer/individual/individual.php`,
+  const { data: transaction } = useQueryData(
+    `/v1/controllers/developer/transaction/transaction.php`,
     "get",
     "transaction"
   );
@@ -119,7 +115,7 @@ const TransactionTable = ({ setItemEdit }) => {
           store.isSearch ? result?.pages[0].count : result?.pages[0].total
         }
         status={getTransactionCountRecord(
-          store.isSearch ? result?.pages[0] : product
+          store.isSearch ? result?.pages[0] : transaction
         )}
       />
       <div className="table__wrapper relative rounded-md shadow-md overflow-auto mb-8">
@@ -170,7 +166,10 @@ const TransactionTable = ({ setItemEdit }) => {
                         )}
                       </td>
                       <td>{item.product_name}</td>
-                      <td>{item.product_quantity}</td>
+                      <td>
+                        {item.individual_fname} {item.individual_lname}
+                      </td>
+                      <td>{item.transaction_quantity}</td>
                       <td
                         className="table__action top-0 right-5 "
                         data-ellipsis=". . ."
