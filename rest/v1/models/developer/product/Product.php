@@ -18,11 +18,13 @@ class Product
     public $connection;
     public $lastInsertedId;
     public $tblProduct;
+    public $tblTransaction;
 
     public function __construct($db)
     {
         $this->connection = $db;
         $this->tblProduct = "sccv1_product";
+        $this->tblTransaction = "sccv1_transaction";
     }
 
     // create
@@ -203,6 +205,21 @@ class Product
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "product_name" => "{$this->product_name}",
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+    // is SRP Exist
+    public function srpExist()
+    {
+        try {
+            $sql = "select transaction_product_id from {$this->tblTransaction} ";
+            $sql .= "where transaction_product_id = :transaction_product_id ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "transaction_product_id" => $this->product_aid,
             ]);
         } catch (PDOException $ex) {
             $query = false;
