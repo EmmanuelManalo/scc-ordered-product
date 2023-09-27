@@ -32,6 +32,7 @@ const Transaction = () => {
       {store.isAdd && <ModalAddTransaction itemEdit={itemEdit} />}
       {store.validate && <ModalValidate />}
       {store.success && <Toast />}
+      
     </>
   );
 };
