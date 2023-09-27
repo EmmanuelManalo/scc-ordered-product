@@ -1,10 +1,6 @@
 import React from "react";
 import { StoreContext } from "../../store/StoreContext";
 
-// CYCY url // cyrenemlumabas@gmail.com
-// export const urlPathTm = "http://localhost/training/tm-practice";
-// export const imgUrlPathTm = "http://localhost/training/tm-practice/public/img";
-
 // // cy url
 // export const imgUrlPathTm = "http://localhost/projects/sccv1/public/img";
 // export const urlPathTm = "http://localhost/projects/sccv1";
@@ -31,7 +27,6 @@ export const devNavUrl = "";
 
 export const devKey =
   "$2a$12$47wDvbLInZif/PVS8B6P3.7WxyJvUpBzZAWCsnWJUKq3nrn4qgmeO";
-// export const devKey = "";
 
 export const isDemoMode = 1;
 

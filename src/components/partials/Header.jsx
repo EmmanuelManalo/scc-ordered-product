@@ -20,7 +20,7 @@ const Header = () => {
           onClick={handleBurgerBtn}
         ></div>
       )}
-      <header className="flex py-4 px-2 lg:px-2 items-center justify-between relative z-50 bg-primary">
+      <header className="flex py-3 px-2 lg:px-2 items-center justify-between relative z-50 bg-primary">
         <div className="flex items-center gap-4">
           <div
             className={`toggle__btn lg:hidden ${
@@ -32,8 +32,11 @@ const Header = () => {
             <span></span>
             <span></span>
           </div>
-          <div className="w-20">
+          <div className="w-[45rem] flex items-center ">
             <Logo />
+            <p className="pl-5 mb-0 text-white font-semibold">
+              Sambahayan Consumer Cooperative
+            </p>
           </div>
         </div>
       </header>

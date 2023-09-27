@@ -68,8 +68,8 @@ class Checkout
         try {
             $sql = "select ";
             $sql .= "product_aid, ";
-            $sql .= "product_quantity, ";
-            $sql .= "product_srp, ";
+            $sql .= "product_quantity as qty, ";
+            $sql .= "product_srp as price, ";
             $sql .= "product_is_active, ";
             $sql .= "product_aid as id, ";
             $sql .= "product_name as name ";

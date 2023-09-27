@@ -131,6 +131,7 @@ const ProductTable = ({ setItemEdit }) => {
               <th width={"100px"}>Status</th>
               <th width={"100px"}>Name</th>
               <th>Quantity</th>
+              <th>Price</th>
               <th className="action lg:hidden"></th>
             </tr>
           </thead>
@@ -170,6 +171,7 @@ const ProductTable = ({ setItemEdit }) => {
                       </td>
                       <td>{item.product_name}</td>
                       <td>{item.product_quantity}</td>
+                      <td>price please</td>
                       <td
                         className="table__action top-0 right-5 "
                         data-ellipsis=". . ."
