@@ -254,12 +254,12 @@
   }
 
   .nav__link button.active {
-    @apply relative text-primary hover:bg-white;
+    @apply relative text-primary hover:bg-white rounded-l-[2rem];
   }
 
-  .nav__link button.active::after {
-    @apply absolute right-0 top-[-3.4rem] w-[1rem] h-full rounded-br-lg content-[""];
-  }
+  /*.nav__link button.active::after {
+    @apply absolute right-0 top-[-3.4rem] w-[1rem] h-full rounded-br-lg content-[""] bg-gray-200;
+  } */
 
   /* .nav__link a.active,
   .nav__link button.active {

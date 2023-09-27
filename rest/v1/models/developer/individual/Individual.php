@@ -78,7 +78,7 @@ class Individual
             $sql .= "* ";
             $sql .= "from {$this->tblIndividual} ";
             $sql .= "order by individual_is_active desc, ";
-            $sql .= "individual_fname asc ";
+            $sql .= "individual_lname asc ";
             $sql .= "limit :start, ";
             $sql .= ":total ";
             $query = $this->connection->prepare($sql);
@@ -120,7 +120,7 @@ class Individual
         try {
             $sql = "select * from {$this->tblIndividual} ";
             $sql .= "where individual_aid = :individual_aid ";
-            $sql .= "order by individual_fname asc ";
+            $sql .= "order by individual_lname asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "individual_aid" => $this->individual_aid,
