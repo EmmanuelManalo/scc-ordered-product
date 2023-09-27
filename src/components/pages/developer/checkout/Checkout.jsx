@@ -163,8 +163,10 @@ const Checkout = () => {
                     <div className="text-2xl">
                       Total: {pesoSign}{" "}
                       {dataProduct?.length > 0
-                        ? Number(dataProduct[0]?.price) *
-                          Number(props.values.transaction_quantity)
+                        ? (
+                            Number(dataProduct[0]?.price) *
+                            Number(props.values.transaction_quantity)
+                          ).toFixed(2)
                         : "0.00"}
                     </div>
                     <div className="flex justify-center mt-10 gap-2">
