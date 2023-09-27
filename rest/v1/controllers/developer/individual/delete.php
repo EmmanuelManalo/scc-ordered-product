@@ -1,4 +1,5 @@
 <?php
+require 'functions.php';
 // check database connection
 $conn = null;
 $conn = checkDbConnection();
@@ -12,7 +13,8 @@ if (array_key_exists("individualId", $_GET)) {
     $individual->individual_aid = $_GET['individualId'];
     checkId($individual->individual_aid);
 
-    indivIdExist($individual, $individual->individual_aid);
+    // check if individual exist at transaction table
+    indivIdExist($individual);
 
     $query = checkDelete($individual);
     returnSuccess($individual, "Individual", $query);
