@@ -250,6 +250,14 @@
     @apply w-full flex gap-3 items-center text-dark p-4  hover:bg-secondary hover:text-white;
   }
 
+  .nav__link button.active {
+    @apply relative;
+  }
+
+  /* .nav__link button.active::before {
+    @apply absolute right-0 top-[-3.2rem] w-[.75rem] h-full rounded-br-lg content-[""] z-50 bg-white;
+  } */
+
   /* .nav__link a.active,
   .nav__link button.active {
     @apply bg-[#436c8a] text-accent;
