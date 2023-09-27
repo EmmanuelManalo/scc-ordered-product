@@ -10,12 +10,12 @@ import { StoreContext } from "../../store/StoreContext";
 // export const urlPathTm = "http://localhost/projects/sccv1";
 
 // Emms
-export const urlPathTm = "http://localhost/project/sccv1";
-export const imgUrlPathTm = "http://localhost/project/sccv1/public/img";
+// export const urlPathTm = "http://localhost/project/sccv1";
+// export const imgUrlPathTm = "http://localhost/project/sccv1/public/img";
 
 // rhico
-// export const urlPathTm = "http://localhost/training/sccv1";
-// export const imgUrlPathTm = "http://localhost/training/sccv1/public/img";
+export const urlPathTm = "http://localhost/training/sccv1";
+export const imgUrlPathTm = "http://localhost/training/sccv1/public/img";
 
 // // Patrick
 // const urlPathTm = `https://tmcrm.frontlinebusiness.com.ph`;
