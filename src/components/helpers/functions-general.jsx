@@ -1,9 +1,9 @@
 import React from "react";
 import { StoreContext } from "../../store/StoreContext";
 
-// // cy url
-export const imgUrlPathTm = "http://localhost/projects/sccv1/public/img";
-export const urlPathTm = "http://localhost/projects/sccv1";
+// // // cy url
+// export const imgUrlPathTm = "http://localhost/projects/sccv1/public/img";
+// export const urlPathTm = "http://localhost/projects/sccv1";
 
 // Emms
 // export const urlPathTm = "http://localhost/project/sccv1";
@@ -13,9 +13,9 @@ export const urlPathTm = "http://localhost/projects/sccv1";
 // export const urlPathTm = "http://localhost/training/sccv1";
 // export const imgUrlPathTm = "http://localhost/training/sccv1/public/img";
 
-// // // Patrick
-// const urlPathTm = `https://checkout.sambahayancoop.com`;
-// const imgUrlPathTm = `https://checkout.sambahayancoop.com/img`;
+// // Patrick
+const urlPathTm = `https://checkout.sambahayancoop.com`;
+const imgUrlPathTm = `https://checkout.sambahayancoop.com/img`;
 
 // // Local Dev and Online Dev URL
 export const devApiUrl = `${urlPathTm}/rest`;
