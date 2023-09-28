@@ -6,8 +6,7 @@ export const handleSearch = async (
   setIsSearch,
   setLoading,
   endpoint,
-  setData,
-  value
+  setData
 ) => {
   if (e.target.value.trim() === "") {
     setSearch("");
@@ -18,7 +17,7 @@ export const handleSearch = async (
   setIsSearch(true);
   setSearch(e.target.value);
 
-  const data = await queryData(endpoint, "post", { search: value });
+  const data = await queryData(endpoint, "post", { search: e.target.value });
 
   if (typeof data === "undefined") {
     setLoading(true);
@@ -43,4 +42,19 @@ export const handleClick = (name, id, setSearch, setIsSearch, setId) => {
   setSearch(name);
   setIsSearch(false);
   setId(id);
+};
+
+export const getRemaningQty = (transactionGroupByProdctId, item) => {
+  let qty = 0;
+
+  const result = transactionGroupByProdctId?.data.filter(
+    (tItem) => Number(tItem.transaction_product_id) === item.product_aid
+  );
+
+  let transactionQty = result?.length > 0 ? result[0].qty : 0;
+  let productQty = item.qty;
+
+  qty = Number(productQty) - Number(transactionQty);
+
+  return qty;
 };

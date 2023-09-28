@@ -1,8 +1,13 @@
 import React from "react";
-import { handleClick, handleSearch } from "./functions-checkout-search";
+import {
+  getRemaningQty,
+  handleClick,
+  handleSearch,
+} from "./functions-checkout-search";
 import { InputSearch } from "../../../../helpers/FormInputs";
 import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import { pesoSign } from "../../../../helpers/functions-general";
+import useQueryData from "../../../../custom-hooks/useQueryData";
 
 const Search = ({
   label,
@@ -20,6 +25,12 @@ const Search = ({
   data,
   setId,
 }) => {
+  const { data: transactionGroupByProdctId } = useQueryData(
+    `/v1/controllers/developer/checkout/group-by-transactions-product-id.php`, // endpoint
+    "get", // method
+    "transactionGroupByProdctId" // key
+  );
+
   return (
     <>
       <InputSearch
@@ -28,15 +39,7 @@ const Search = ({
         disabled={disabled}
         name={name}
         onChange={(e) =>
-          handleSearch(
-            e,
-            setSearch,
-            setIsSearch,
-            setLoading,
-            endpoint,
-            setData,
-            e.target.value
-          )
+          handleSearch(e, setSearch, setIsSearch, setLoading, endpoint, setData)
         }
         value={search}
         placeholder="Search..."
@@ -73,7 +76,10 @@ const Search = ({
               >
                 {item.name} {item.price !== undefined && pesoSign}
                 {item.price !== undefined &&
-                  ` ${Number(item.price).toFixed(2)}`}
+                  ` ${Number(item.price).toFixed(2)} (${getRemaningQty(
+                    transactionGroupByProdctId,
+                    item
+                  )} pcs)`}
               </button>
             ))
           ) : (
