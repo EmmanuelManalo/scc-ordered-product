@@ -181,10 +181,10 @@ const TransactionTable = ({ setItemEdit }) => {
                         {Number(item.transaction_total).toFixed(2)}
                       </td>
                       <td
-                        className="table__action top-0 right-5 "
+                        className="table__action top-0 right-3 "
                         data-ellipsis=". . ."
                       >
-                        <ul className=" flex items-center  gap-4 bg-">
+                        <ul className=" flex items-center  gap-3 ">
                           {item.transaction_is_paid === 1 ? (
                             <>
                               <li>

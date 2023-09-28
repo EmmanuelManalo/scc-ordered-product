@@ -114,6 +114,7 @@ class Checkout
         return $query;
     }
 
+
     // read all product
     public function readQuantityTransaction()
     {
@@ -130,6 +131,24 @@ class Checkout
             $query->execute([
                 "transaction_product_id" => $this->transaction_product_id,
             ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    // group by transaction produd Id
+    public function groupByTransactionProdId()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "transaction_product_id, ";
+            $sql .= "SUM(transaction_quantity) as qty, ";
+            $sql .= "transaction_is_paid ";
+            $sql .= "from {$this->tblTransaction} ";
+            $sql .= "group by transaction_product_id ";
+            $sql .= "order by transaction_is_paid asc ";
+            $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
             $query = false;
         }
