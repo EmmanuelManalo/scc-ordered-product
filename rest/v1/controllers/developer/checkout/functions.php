@@ -15,3 +15,11 @@ function checkSearchProduct($object)
     checkQuery($query, "Empty records. (search product)");
     return $query;
 }
+
+// Update 
+function checkUpdateProduct($object)
+{
+    $query = $object->updateProduct();
+    checkQuery($query, "There's a problem processing your request. (update product)");
+    return $query;
+}

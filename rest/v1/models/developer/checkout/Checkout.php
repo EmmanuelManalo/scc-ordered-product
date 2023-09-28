@@ -10,6 +10,7 @@ class Checkout
     public $transaction_created_at;
     public $transaction_updated_at;
 
+    public $product_quantity;
     public $checkout_search;
 
     public $connection;
@@ -114,21 +115,19 @@ class Checkout
         return $query;
     }
 
-    // read all product
-    public function readQuantityTransaction()
+    // updateProduct
+    public function updateProduct()
     {
         try {
-            $sql = "select ";
-            $sql .= "transaction_product_id, ";
-            $sql .= "SUM(transaction_quantity) as qty, ";
-            $sql .= "transaction_is_paid ";
-            $sql .= "from {$this->tblTransaction} ";
-            $sql .= "where transaction_product_id = :transaction_product_id ";
-            $sql .= "group by transaction_product_id ";
-            $sql .= "order by transaction_is_paid asc ";
+            $sql = "update {$this->tblProduct} set ";
+            $sql .= "product_quantity = :product_quantity, ";
+            $sql .= "product_updated_at = :product_updated_at ";
+            $sql .= "where product_aid = :product_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "transaction_product_id" => $this->transaction_product_id,
+                "product_quantity" => $this->product_quantity,
+                "product_updated_at" => $this->transaction_updated_at,
+                "product_aid" => $this->transaction_product_id,
             ]);
         } catch (PDOException $ex) {
             $query = false;

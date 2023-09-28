@@ -101,6 +101,7 @@ const TransactionTable = ({ setItemEdit }) => {
     setData(item);
     setDel(true);
   };
+
   return (
     <>
       <Searchbar
@@ -181,10 +182,10 @@ const TransactionTable = ({ setItemEdit }) => {
                         {Number(item.transaction_total).toFixed(2)}
                       </td>
                       <td
-                        className="table__action top-0 right-5 "
+                        className="table__action top-0 right-3 "
                         data-ellipsis=". . ."
                       >
-                        <ul className=" flex items-center  gap-4 bg-">
+                        <ul className=" flex items-center  gap-3 ">
                           {item.transaction_is_paid === 1 ? (
                             <>
                               <li>
@@ -270,6 +271,7 @@ const TransactionTable = ({ setItemEdit }) => {
               : "Are you sure you want to pay this transaction?"
           }
           item={dataItem.transaction_name}
+          data={dataItem}
           queryKey={"transaction"}
           transaction={true}
         />

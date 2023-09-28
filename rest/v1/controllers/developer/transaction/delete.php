@@ -12,6 +12,16 @@ if (array_key_exists("transactionId", $_GET)) {
     $transaction->transaction_aid = $_GET['transactionId'];
     checkId($transaction->transaction_aid);
 
+    $item = $data["data"];
+
+    $transaction->transaction_product_id = checkIndex($item, "transaction_product_id");
+    $productQty = checkIndex($item, "product_quantity");
+    $transactionQty = checkIndex($item, "transaction_quantity");
+    $transaction->transaction_updated_at = date("Y-m-d H:i:s");
+
+    $transaction->product_quantity = (int)$productQty + (int)$transactionQty;
+
+    checkUpdateProduct($transaction);
     $query = checkDelete($transaction);
     returnSuccess($transaction, "Transaction", $query);
 }

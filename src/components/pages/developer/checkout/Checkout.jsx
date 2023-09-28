@@ -9,14 +9,13 @@ import {
 } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
 import { InputText } from "../../../helpers/FormInputs";
+import { pesoSign } from "../../../helpers/functions-general";
 import { queryData } from "../../../helpers/queryData";
 import Toast from "../../../partials/Toast";
 import ModalValidate from "../../../partials/modals/ModalValidate";
 import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
 import CheckoutHeader from "./CheckoutHeader";
 import Search from "./search/Search";
-import { devApiUrl, pesoSign } from "../../../helpers/functions-general";
-// import * as Yup from "yup";
 
 const Checkout = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -79,6 +78,7 @@ const Checkout = () => {
     searchProduct: Yup.string().required("Required"),
     transaction_quantity: Yup.string().required("Required"),
   });
+
   return (
     <>
       <CheckoutHeader />
@@ -89,11 +89,16 @@ const Checkout = () => {
             initialValues={initVal}
             validationSchema={yupSchema}
             onSubmit={async (values, { setSubmitting, resetForm }) => {
-              if (dataProduct?.length === 0) {
-                dispatch(setValidate(true));
-                dispatch(setMessage("please select product first"));
-                return;
-              }
+              // if (dataProduct?.length === 0) {
+              //   dispatch(setValidate(true));
+              //   dispatch(setMessage("please select product first"));
+              //   return;
+              // }
+              // if (dataIndividual?.length === 0) {
+              //   dispatch(setValidate(true));
+              //   dispatch(setMessage("please select individual first"));
+              //   return;
+              // }
 
               const totalAmount =
                 Number(dataProduct[0]?.price) *
@@ -105,7 +110,7 @@ const Checkout = () => {
                 transaction_product_id: productId,
                 transaction_individual_id: individualId,
                 transaction_total: totalAmount,
-                product: dataProduct[0],
+                productQty: dataProduct[0]?.qty,
               });
               resetForm();
             }}
