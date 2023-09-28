@@ -9,14 +9,13 @@ import {
 } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
 import { InputText } from "../../../helpers/FormInputs";
+import { pesoSign } from "../../../helpers/functions-general";
 import { queryData } from "../../../helpers/queryData";
 import Toast from "../../../partials/Toast";
 import ModalValidate from "../../../partials/modals/ModalValidate";
 import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
 import CheckoutHeader from "./CheckoutHeader";
 import Search from "./search/Search";
-import { devApiUrl, pesoSign } from "../../../helpers/functions-general";
-// import * as Yup from "yup";
 
 const Checkout = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -79,6 +78,7 @@ const Checkout = () => {
     searchProduct: Yup.string().required("Required"),
     transaction_quantity: Yup.string().required("Required"),
   });
+
   return (
     <>
       <CheckoutHeader />
@@ -92,6 +92,11 @@ const Checkout = () => {
               if (dataProduct?.length === 0) {
                 dispatch(setValidate(true));
                 dispatch(setMessage("please select product first"));
+                return;
+              }
+              if (dataIndividual?.length === 0) {
+                dispatch(setValidate(true));
+                dispatch(setMessage("please select individual first"));
                 return;
               }
 
@@ -148,6 +153,7 @@ const Checkout = () => {
                         loading={loadingProduct}
                         data={dataProduct}
                         setId={setProductId}
+                        // quantity={transactionGroupByProdctId?.data}
                       />
                     </div>
                     <div className="form__wrap">
