@@ -9,13 +9,13 @@ import { StoreContext } from "../../store/StoreContext";
 // export const urlPathTm = "http://localhost/project/sccv1";
 // export const imgUrlPathTm = "http://localhost/project/sccv1/public/img";
 
-//rhico
-export const urlPathTm = "http://localhost/training/sccv1";
-export const imgUrlPathTm = "http://localhost/training/sccv1/public/img";
+// //rhico
+// export const urlPathTm = "http://localhost/training/sccv1";
+// export const imgUrlPathTm = "http://localhost/training/sccv1/public/img";
 
 // // Patrick
-// const urlPathTm = `https://tmcrm.frontlinebusiness.com.ph`;
-// const imgUrlPathTm = `https://tmcrm.frontlinebusiness.com.ph/img`;
+const urlPathTm = `https://checkout.sambahayancoop.com`;
+const imgUrlPathTm = `https://checkout.sambahayancoop.com/img`;
 
 // // Local Dev and Online Dev URL
 export const devApiUrl = `${urlPathTm}/rest`;
