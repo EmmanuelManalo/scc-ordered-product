@@ -101,6 +101,7 @@ const TransactionTable = ({ setItemEdit }) => {
     setData(item);
     setDel(true);
   };
+
   return (
     <>
       <Searchbar
@@ -270,6 +271,7 @@ const TransactionTable = ({ setItemEdit }) => {
               : "Are you sure you want to pay this transaction?"
           }
           item={dataItem.transaction_name}
+          data={dataItem}
           queryKey={"transaction"}
           transaction={true}
         />

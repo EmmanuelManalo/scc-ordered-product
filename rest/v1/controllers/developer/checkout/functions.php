@@ -16,10 +16,10 @@ function checkSearchProduct($object)
     return $query;
 }
 
-// Group By Transaction Product Id
-function checkGroupByTransactionProdId($object)
+// Update 
+function checkUpdateProduct($object)
 {
-    $query = $object->groupByTransactionProdId();
-    checkQuery($query, "Empty records. (group by product id)");
+    $query = $object->updateProduct();
+    checkQuery($query, "There's a problem processing your request. (update product)");
     return $query;
 }

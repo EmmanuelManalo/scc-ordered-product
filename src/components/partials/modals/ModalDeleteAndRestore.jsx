@@ -18,6 +18,7 @@ const ModalDeleteAndRestore = ({
   mysqlApiRestore,
   msg,
   item,
+  data = "",
   queryKey,
   transaction = false,
 }) => {
@@ -60,6 +61,7 @@ const ModalDeleteAndRestore = ({
     mutation.mutate({
       isActive: 1,
       item: item,
+      data: data,
     });
   };
 

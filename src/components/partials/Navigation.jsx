@@ -62,7 +62,7 @@ const Navigation = ({ menu }) => {
           </div>
         </button>
       </Link>
-      <Link className="nav__link" to={`${urlRolePath}/`}>
+      <Link className="nav__link" to={`${urlRolePath}/`} target="_blank">
         <button
           className={`${
             menu === "checkout"

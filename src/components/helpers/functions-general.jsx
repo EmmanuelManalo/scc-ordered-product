@@ -14,14 +14,14 @@ import { StoreContext } from "../../store/StoreContext";
 // export const imgUrlPathTm = "http://localhost/training/sccv1/public/img";
 
 // // Patrick
-const urlPathTm = `https://checkout.sambahayancoop.com`;
-const imgUrlPathTm = `https://checkout.sambahayancoop.com/img`;
+const urlPathTm = `https://dev.sambahayancoop.com/co`;
+const imgUrlPathTm = `https://dev.sambahayancoop.com/co/img`;
 
 // // Local Dev and Online Dev URL
 export const devApiUrl = `${urlPathTm}/rest`;
 export const devBaseUrl = `${urlPathTm}`;
 export const devBaseImgUrl = `${imgUrlPathTm}`;
-export const devNavUrl = "";
+export const devNavUrl = "/co";
 
 // ONLINE PRODUCTION START HERE //
 

@@ -89,16 +89,16 @@ const Checkout = () => {
             initialValues={initVal}
             validationSchema={yupSchema}
             onSubmit={async (values, { setSubmitting, resetForm }) => {
-              if (dataProduct?.length === 0) {
-                dispatch(setValidate(true));
-                dispatch(setMessage("please select product first"));
-                return;
-              }
-              if (dataIndividual?.length === 0) {
-                dispatch(setValidate(true));
-                dispatch(setMessage("please select individual first"));
-                return;
-              }
+              // if (dataProduct?.length === 0) {
+              //   dispatch(setValidate(true));
+              //   dispatch(setMessage("please select product first"));
+              //   return;
+              // }
+              // if (dataIndividual?.length === 0) {
+              //   dispatch(setValidate(true));
+              //   dispatch(setMessage("please select individual first"));
+              //   return;
+              // }
 
               const totalAmount =
                 Number(dataProduct[0]?.price) *
@@ -110,7 +110,7 @@ const Checkout = () => {
                 transaction_product_id: productId,
                 transaction_individual_id: individualId,
                 transaction_total: totalAmount,
-                product: dataProduct[0],
+                productQty: dataProduct[0]?.qty,
               });
               resetForm();
             }}
@@ -153,7 +153,6 @@ const Checkout = () => {
                         loading={loadingProduct}
                         data={dataProduct}
                         setId={setProductId}
-                        // quantity={transactionGroupByProdctId?.data}
                       />
                     </div>
                     <div className="form__wrap">

@@ -25,12 +25,6 @@ const Search = ({
   data,
   setId,
 }) => {
-  const { data: transactionGroupByProdctId } = useQueryData(
-    `/v1/controllers/developer/checkout/group-by-transactions-product-id.php`, // endpoint
-    "get", // method
-    "transactionGroupByProdctId" // key
-  );
-
   return (
     <>
       <InputSearch
@@ -76,10 +70,7 @@ const Search = ({
               >
                 {item.name} {item.price !== undefined && pesoSign}
                 {item.price !== undefined &&
-                  ` ${Number(item.price).toFixed(2)} (${getRemaningQty(
-                    transactionGroupByProdctId,
-                    item
-                  )} pcs)`}
+                  ` ${Number(item.price).toFixed(2)} (${item.qty} pcs)`}
               </button>
             ))
           ) : (
