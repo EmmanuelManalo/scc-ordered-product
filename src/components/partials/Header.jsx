@@ -1,10 +1,7 @@
 import React from "react";
-import { BiSolidUserCircle, BiUserCircle } from "react-icons/bi";
 import { setIsAvatar, setIsMenuOpen } from "../../store/StoreAction";
 import { StoreContext } from "../../store/StoreContext";
-import { CiMail } from "react-icons/ci";
 import Logo from "../svg/Logo";
-import { MdOutlineLogout } from "react-icons/md";
 
 const Header = () => {
   const { store, dispatch } = React.useContext(StoreContext);
