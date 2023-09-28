@@ -1,5 +1,4 @@
 <?php
-require 'functions.php';
 // check database connection
 $conn = null;
 $conn = checkDbConnection();
