@@ -26,7 +26,7 @@ function App() {
                 path={`${devNavUrl}/transaction`}
                 element={<Transaction />}
               />
-              <Route path={`/`} element={<Checkout />} />
+              <Route path={`${devNavUrl}`} element={<Checkout />} />
             </Routes>
           </Router>
         </StoreProvider>
