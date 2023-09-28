@@ -6,6 +6,7 @@ import Product from "./components/pages/developer/product/product";
 import { StoreProvider } from "./store/StoreContext";
 import Checkout from "./components/pages/developer/checkout/Checkout";
 import Transaction from "./components/pages/developer/transaction/Transaction";
+import { devNavUrl } from "./components/helpers/functions-general";
 
 function App() {
   const queryClient = new QueryClient();
@@ -15,11 +16,17 @@ function App() {
         <StoreProvider>
           <Router>
             <Routes>
-              <Route path={"*"} element={<Product />} />
-              <Route path={"/product"} element={<Product />} />
-              <Route path={"/individual"} element={<Individual />} />
-              <Route path={"/transaction"} element={<Transaction />} />
-              <Route path={"/checkout"} element={<Checkout />} />
+              <Route path={"*"} element={<div>404 | Page not found</div>} />
+              <Route path={`${devNavUrl}/product`} element={<Product />} />
+              <Route
+                path={`${devNavUrl}/individual`}
+                element={<Individual />}
+              />
+              <Route
+                path={`${devNavUrl}/transaction`}
+                element={<Transaction />}
+              />
+              <Route path={`${devNavUrl}`} element={<Checkout />} />
             </Routes>
           </Router>
         </StoreProvider>
