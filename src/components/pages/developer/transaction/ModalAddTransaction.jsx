@@ -46,7 +46,6 @@ const ModalAddTransaction = ({ itemEdit }) => {
 
   const {
     loadingProduct,
-    isFetchingProduct,
     errorProduct,
     data: product,
   } = useQueryData(
@@ -54,9 +53,9 @@ const ModalAddTransaction = ({ itemEdit }) => {
     "get",
     "product"
   );
+
   const {
     loadingIndividual,
-    isFetchingIndividual,
     errorIndividual,
     data: individual,
   } = useQueryData(
@@ -71,7 +70,8 @@ const ModalAddTransaction = ({ itemEdit }) => {
       ? itemEdit.transaction_individual_id
       : "",
     transaction_quantity: itemEdit ? itemEdit.transaction_quantity : "",
-
+    transaction_quantity_old: itemEdit ? itemEdit.transaction_quantity : "",
+    productQty: itemEdit ? itemEdit.product_quantity : "",
   };
 
   const yupSchema = Yup.object({

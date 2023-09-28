@@ -10,7 +10,7 @@ class Transaction
     public $transaction_created_at;
     public $transaction_updated_at;
 
-    public $employee_aid;
+    public $product_quantity;
 
     public $transaction_start;
     public $transaction_total;
@@ -230,6 +230,25 @@ class Transaction
         return $query;
     }
 
+    // updateProduct
+    public function updateProduct()
+    {
+        try {
+            $sql = "update {$this->tblProduct} set ";
+            $sql .= "product_quantity = :product_quantity, ";
+            $sql .= "product_updated_at = :product_updated_at ";
+            $sql .= "where product_aid = :product_aid ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "product_quantity" => $this->product_quantity,
+                "product_updated_at" => $this->transaction_updated_at,
+                "product_aid" => $this->transaction_product_id,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
 
     // active
     public function active()

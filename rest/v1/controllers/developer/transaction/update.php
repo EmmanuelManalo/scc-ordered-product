@@ -1,4 +1,5 @@
 <?php
+require 'functions.php';
 // check database connection
 $conn = null;
 $conn = checkDbConnection();
@@ -18,9 +19,18 @@ if (array_key_exists("transactionId", $_GET)) {
     $transaction->transaction_updated_at = date("Y-m-d H:i:s");
     checkId($transaction->transaction_aid);
 
+    $transaction_quantity_old = checkIndex($data, "transaction_quantity_old");
+    $productQty = checkIndex($data, "productQty");
+
+    $transaction->product_quantity = ((int)$productQty + (int)$transaction_quantity_old) -  (int)$transaction->transaction_quantity;
+
+    if ($transaction->product_quantity < 0) {
+        resultError("Insufficient quantity.");
+    }
 
     // update
     $query = checkUpdate($transaction);
+    checkUpdateProduct($transaction);
     returnSuccess($transaction, "Transaction", $query);
 }
 

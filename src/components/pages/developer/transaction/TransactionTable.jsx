@@ -101,6 +101,8 @@ const TransactionTable = ({ setItemEdit }) => {
     setData(item);
     setDel(true);
   };
+
+  console.log("result", result);
   return (
     <>
       <Searchbar

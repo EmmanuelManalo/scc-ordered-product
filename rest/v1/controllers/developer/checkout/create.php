@@ -33,30 +33,14 @@ $check_out->transaction_created_at = date("Y-m-d H:i:s");
 $check_out->transaction_updated_at = date("Y-m-d H:i:s");
 // create
 
-// 
-$qtyTransaction = $check_out->readQuantityTransaction();
-$product = $data["product"];
+$productQty = checkIndex($data, "productQty");
 
-$transactionQty = 0;
-$productQty = 0;
+$check_out->product_quantity = (int)$productQty -  (int)$check_out->transaction_quantity;
 
-// update if first load
-if ($qtyTransaction->rowCount() > 0) {
-    $row = $qtyTransaction->fetch(PDO::FETCH_ASSOC);
-    extract($row);
-    $transactionQty = $qty;
-}
-
-// update if first load
-if ($product != []) {
-    $productQty = checkIndex($product, "qty");
-}
-
-$totalQuantity = (int)$productQty - ((int)$transactionQty + (int)$check_out->transaction_quantity);
-
-if ($totalQuantity < 0) {
+if ($check_out->product_quantity < 0) {
     resultError("Insufficient quantity.");
 }
 
 $query = checkCreate($check_out);
+checkUpdateProduct($check_out);
 returnSuccess($check_out, "checkout", $query);
