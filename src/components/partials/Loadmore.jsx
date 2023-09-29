@@ -14,7 +14,7 @@ const Loadmore = ({
     return (
       <>
         {isFetchingNextPage ? (
-          <button type="button" className="btn mx-auto mt-5">
+          <button type="button" className="btn mx-auto mt-5 w-32">
             {isFetchingNextPage ? <ButtonSpinner /> : "Load More"}
           </button>
         ) : (
@@ -35,7 +35,7 @@ const Loadmore = ({
           setPage((prev) => prev + 1);
           fetchNextPage();
         }}
-        className="btn mx-auto mt-5 mb-3"
+        className="btn mx-auto mt-5 mb-3 w-32"
       >
         {!isFetchingNextPage ? <span>Load more</span> : <ButtonSpinner />}
       </button>
