@@ -33,7 +33,7 @@ const ProductTable = ({ setItemEdit }) => {
   const [isDel, setDel] = React.useState(false);
 
   const [page, setPage] = React.useState(1);
-  const search = React.useRef(null);
+  const search = React.useRef("");
   const { ref, inView } = useInView();
 
   let counter = 1;
@@ -48,7 +48,7 @@ const ProductTable = ({ setItemEdit }) => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["product", store.isSearch],
+    queryKey: ["product", search.current.value, store.isSearch],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
         `/v1/controllers/developer/product/search.php`, // search endpoint
