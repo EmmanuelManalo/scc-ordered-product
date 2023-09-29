@@ -31,7 +31,7 @@ const IndividualTable = ({ setItemEdit }) => {
   const [isDel, setDel] = React.useState(false);
 
   const [page, setPage] = React.useState(1);
-  const search = React.useRef(null);
+  const search = React.useRef("");
   const { ref, inView } = useInView();
 
   let counter = 1;
@@ -48,7 +48,7 @@ const IndividualTable = ({ setItemEdit }) => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["individual", store.isSearch],
+    queryKey: ["individual", search.current.value, store.isSearch],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
         `/v1/controllers/developer/individual/search.php`, // search endpoint
