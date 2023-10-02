@@ -14,7 +14,7 @@ $transaction = new Transaction($conn);
 if (array_key_exists("start", $_GET)) {
 
     $transaction->transaction_start = $_GET['start'];
-    $transaction->transaction_total = 3;
+    $transaction->transaction_total = 10;
 
     //check to see if task id in query string is not empty and is number, if not return json error
     checkLimitId($transaction->transaction_start, $transaction->transaction_total);

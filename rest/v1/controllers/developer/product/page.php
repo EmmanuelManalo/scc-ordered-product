@@ -14,7 +14,7 @@ $product = new Product($conn);
 if (array_key_exists("start", $_GET)) {
 
     $product->product_start = $_GET['start'];
-    $product->product_total = 3;
+    $product->product_total = 10;
 
     //check to see if task id in query string is not empty and is number, if not return json error
     checkLimitId($product->product_start, $product->product_total);

@@ -1,12 +1,16 @@
 UPLOAD
 
 *controllers   
-    -developer/individual/create.php
+    - developer/individual/create.php
+    - developer/individual/page.php
+    - developer/product/page.php
+    - developer/transaction/page.php
     -
     
     
-*models    
-    - 
+*models     
+    - developer/individual/Individual.php
+    - developer/transaction/Transaction.php
     - 
     - 
     - 

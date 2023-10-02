@@ -14,7 +14,7 @@ $individual = new Individual($conn);
 if (array_key_exists("start", $_GET)) {
 
     $individual->individual_start = $_GET['start'];
-    $individual->individual_total = 5;
+    $individual->individual_total = 10;
 
     //check to see if task id in query string is not empty and is number, if not return json error
     checkLimitId($individual->individual_start, $individual->individual_total);
