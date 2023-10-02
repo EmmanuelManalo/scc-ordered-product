@@ -64,7 +64,7 @@ class Individual
             $sql .= "* ";
             $sql .= "from {$this->tblIndividual} ";
             $sql .= "order by individual_is_active desc, ";
-            $sql .= "individual_fname asc ";
+            $sql .= "individual_lname asc ";
             $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
             $query = false;
@@ -105,7 +105,7 @@ class Individual
             $sql .= "or individual_lname like :search_lname ";
             $sql .= "or concat(individual_lname, ' ' , individual_fname) like :fullname) ";
             $sql .= "order by individual_is_active desc, ";
-            $sql .= "individual_fname asc ";
+            $sql .= "individual_lname asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "search_fname" => "%{$this->individual_search}%",
@@ -209,7 +209,7 @@ class Individual
         }
         return $query;
     }
-    
+
     // is individualID Exist
     public function indivIdExist()
     {

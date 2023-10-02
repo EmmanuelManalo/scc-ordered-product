@@ -2,6 +2,7 @@ UPLOAD
 
 *controllers   
     -> developer/checkout/create.php 
+    -> developer/checkout/functions.php 
     - developer/individual/create.php
     - developer/individual/page.php
     - developer/product/page.php
@@ -11,7 +12,7 @@ UPLOAD
     
 *models     
     -> developer/checkout/Checkout.php
-    - developer/individual/Individual.php
+    -> developer/individual/Individual.php
     - developer/transaction/Transaction.php
     - 
     
