@@ -202,7 +202,7 @@ const TransactionTable = ({ setItemEdit }) => {
                             </>
                           ) : (
                             <>
-                              <li>
+                              {/* <li>
                                 <button
                                   className="tooltip"
                                   data-tooltip="edit"
@@ -210,7 +210,7 @@ const TransactionTable = ({ setItemEdit }) => {
                                 >
                                   <FiEdit3 />
                                 </button>
-                              </li>
+                              </li> */}
                               <li>
                                 <button
                                   className="tooltip"

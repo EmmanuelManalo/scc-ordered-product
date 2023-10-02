@@ -1,19 +1,22 @@
 UPLOAD
 
 *controllers   
-    -> developer/checkout/create.php 
-    -> developer/checkout/functions.php 
+    -> developer/transaction/delete.php 
+    -> developer/transaction/function.php
+    - developer/checkout/create.php 
+    - developer/checkout/functions.php 
     - developer/individual/create.php
     - developer/individual/page.php
     - developer/product/page.php
     - developer/transaction/page.php
+    
     -
     
     
 *models     
-    -> developer/checkout/Checkout.php
     -> developer/individual/Individual.php
-    - developer/transaction/Transaction.php
+    -> developer/transaction/Transaction.php
+    - developer/checkout/Checkout.php
     - 
     
     

@@ -32,6 +32,7 @@ const Checkout = () => {
   const [searchProduct, setSearchProduct] = React.useState("");
   const [dataProduct, setDataProduct] = React.useState([]);
   const [productId, setProductId] = React.useState("");
+  const [items, setItems] = React.useState({});
 
   const queryClient = useQueryClient();
 
@@ -78,7 +79,11 @@ const Checkout = () => {
     searchProduct: Yup.string().required("Required"),
     transaction_quantity: Yup.string().required("Required"),
   });
-
+  console.log(
+    "dataProduct?.length",
+    dataProduct?.length,
+    dataIndividual?.length
+  );
   return (
     <>
       <CheckoutHeader />
@@ -89,20 +94,19 @@ const Checkout = () => {
             initialValues={initVal}
             validationSchema={yupSchema}
             onSubmit={async (values, { setSubmitting, resetForm }) => {
-              // if (dataProduct?.length === 0) {
-              //   dispatch(setValidate(true));
-              //   dispatch(setMessage("please select product first"));
-              //   return;
-              // }
-              // if (dataIndividual?.length === 0) {
-              //   dispatch(setValidate(true));
-              //   dispatch(setMessage("please select individual first"));
-              //   return;
-              // }
+              if (dataProduct?.length === 0) {
+                dispatch(setValidate(true));
+                dispatch(setMessage("please select product first"));
+                return;
+              }
+              if (dataIndividual?.length === 0) {
+                dispatch(setValidate(true));
+                dispatch(setMessage("please select individual first"));
+                return;
+              }
 
               const totalAmount =
-                Number(dataProduct[0]?.price) *
-                Number(values.transaction_quantity);
+                Number(items.price) * Number(values.transaction_quantity);
 
               // mutate data
               mutation.mutate({
@@ -110,7 +114,7 @@ const Checkout = () => {
                 transaction_product_id: productId,
                 transaction_individual_id: individualId,
                 transaction_total: totalAmount,
-                productQty: dataProduct[0]?.qty,
+                productQty: items.qty,
               });
               resetForm();
             }}
@@ -135,6 +139,8 @@ const Checkout = () => {
                         loading={loadingIndividual}
                         data={dataIndividual}
                         setId={setIndividualId}
+                        setItems={setItems}
+                        items={items}
                       />
                     </div>
                     <div className="form__wrap">
@@ -153,6 +159,8 @@ const Checkout = () => {
                         loading={loadingProduct}
                         data={dataProduct}
                         setId={setProductId}
+                        setItems={setItems}
+                        items={items}
                       />
                     </div>
                     <div className="form__wrap">
@@ -169,7 +177,7 @@ const Checkout = () => {
                       Total: {pesoSign}{" "}
                       {dataProduct?.length > 0
                         ? (
-                            Number(dataProduct[0]?.price) *
+                            Number(items.price) *
                             Number(props.values.transaction_quantity)
                           ).toFixed(2)
                         : "0.00"}

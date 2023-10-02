@@ -1,15 +1,10 @@
 import React from "react";
-import {
-  getRemaningQty,
-  handleClick,
-  handleSearch,
-} from "./functions-checkout-search";
 import { InputSearch } from "../../../../helpers/FormInputs";
-import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import { pesoSign } from "../../../../helpers/functions-general";
-import useQueryData from "../../../../custom-hooks/useQueryData";
 import Nodata from "../../../../partials/Nodata";
+import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
+import { handleClick, handleSearch } from "./functions-checkout-search";
 
 const Search = ({
   label,
@@ -26,6 +21,8 @@ const Search = ({
   loading,
   data,
   setId,
+  setItems,
+  items,
 }) => {
   return (
     <>
@@ -62,11 +59,12 @@ const Search = ({
                 key={key}
                 onClick={() =>
                   handleClick(
-                    `${item.name}`,
-                    item.id,
+                    item,
                     setSearch,
                     setIsSearch,
-                    setId
+                    setId,
+                    setItems,
+                    items
                   )
                 }
               >

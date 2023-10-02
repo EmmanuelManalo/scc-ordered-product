@@ -38,10 +38,18 @@ export const handleSearch = async (
   }
 };
 
-export const handleClick = (name, id, setSearch, setIsSearch, setId) => {
-  setSearch(name);
+export const handleClick = (
+  item,
+  setSearch,
+  setIsSearch,
+  setId,
+  setItems,
+  items
+) => {
+  setSearch(item.name);
   setIsSearch(false);
-  setId(id);
+  setId(item.id);
+  setItems(item.price !== undefined ? item : items);
 };
 
 export const getRemaningQty = (transactionGroupByProdctId, item) => {
