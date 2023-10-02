@@ -5,9 +5,7 @@ UPLOAD
     -
     
     
-*models    
-    - developer/individual/Individual.php
-    - developer/transaction/Transaction.php
+*models     
     - 
     - 
     -  
@@ -18,11 +16,14 @@ UPLOAD
 
 
 *db tables   
+    - 
     -  
 
 
-*core functions  
+*core functions 
+    - 
     -  
 
-*extra 
+*extra
+    - 
     - 
