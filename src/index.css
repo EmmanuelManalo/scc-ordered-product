@@ -1,8 +1,9 @@
 @font-face {
   font-family: "interRegular";
+  /* font-family: "poppinsRegular"; */
   src: url(/font/Poppins-Regular.ttf) format("truetype");
   /* src: url(/font/Inter-Regular.ttf) format("truetype"); */
-  font-display: fallback;
+  /* font-display: fallback; */
 }
 
 @tailwind base;
@@ -380,7 +381,7 @@
 }
 
 @media print {
-  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
   * {
     margin: 0 !important;

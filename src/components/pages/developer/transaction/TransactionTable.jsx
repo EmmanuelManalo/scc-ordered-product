@@ -34,7 +34,7 @@ const TransactionTable = ({ setItemEdit }) => {
   let counter = 1;
   // loadmore & search
   const [page, setPage] = React.useState(1);
-  const search = React.useRef(null);
+  const search = React.useRef("");
   const { ref, inView } = useInView();
   // use if with loadmore button and search bar
   const {
@@ -46,7 +46,7 @@ const TransactionTable = ({ setItemEdit }) => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["transaction", store.isSearch],
+    queryKey: ["transaction", search.current.value, store.isSearch],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
         `/v1/controllers/developer/transaction/search.php`, // search endpoint
@@ -101,6 +101,7 @@ const TransactionTable = ({ setItemEdit }) => {
     setData(item);
     setDel(true);
   };
+
   return (
     <>
       <Searchbar
@@ -270,6 +271,7 @@ const TransactionTable = ({ setItemEdit }) => {
               : "Are you sure you want to pay this transaction?"
           }
           item={dataItem.transaction_name}
+          data={dataItem}
           queryKey={"transaction"}
           transaction={true}
         />

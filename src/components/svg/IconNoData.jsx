@@ -1,11 +1,11 @@
 import React from "react";
 
-const IconNoData = () => {
+const IconNoData = ({ width, height }) => {
   return (
     <div>
       <svg
-        width="90"
-        height="110"
+        width={width}
+        height={height}
         viewBox="0 0 135 177"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
