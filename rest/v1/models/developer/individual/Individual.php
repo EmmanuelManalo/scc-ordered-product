@@ -210,6 +210,22 @@ class Individual
         return $query;
     }
 
+    // name
+    public function checkIndivName()
+    {
+        try {
+            $sql = "select individual_fname from {$this->tblIndividual} ";
+            $sql .= "where individual_fname = :individual_fname ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "individual_fname" => "{$this->individual_fname}",
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
     // is individualID Exist
     public function indivIdExist()
     {
