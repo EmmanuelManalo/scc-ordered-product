@@ -18,7 +18,7 @@ $individual->individual_is_active = 1;
 $individual->individual_created_at = date("Y-m-d H:i:s");
 $individual->individual_updated_at = date("Y-m-d H:i:s");
 // // check name
-isIndividualNameExist($individual, $individual->individual_fname, $individual-> individual_lname);
+isIndividualNameExist($individual, $individual->individual_fname, $individual->individual_lname);
 // create
 $query = checkCreate($individual);
 returnSuccess($individual, "Individual", $query);
