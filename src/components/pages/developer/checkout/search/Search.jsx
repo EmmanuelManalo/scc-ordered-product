@@ -8,6 +8,8 @@ import { InputSearch } from "../../../../helpers/FormInputs";
 import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import { pesoSign } from "../../../../helpers/functions-general";
 import useQueryData from "../../../../custom-hooks/useQueryData";
+import Nodata from "../../../../partials/Nodata";
+import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
 
 const Search = ({
   label,
@@ -47,16 +49,16 @@ const Search = ({
       )}
 
       {isSearch && (
-        <ul className="absolute z-50 max-h-32 overflow-y-auto top-16 w-full bg-white shadow-3xl rounded-md">
+        <ul className="absolute z-50 h-40 max-h-40 overflow-y-auto top-16 w-full bg-gray-100 shadow-3xl rounded-md custom__scroll">
           {loading ? (
-            <li className=" p-2 w-full text-center bg-gray-100  focus:bg-gray-200 border-b border-gray-200">
-              Loading...
+            <li className="p-2 h-full w-full flex items-center justify-center bg-gray-200  focus:bg-gray-200 ">
+              <FetchingSpinner />
             </li>
           ) : data.length > 0 ? (
             data.map((item, key) => (
               <button
                 type="button"
-                className="p-2 w-full text-center bg-gray-100 hover:bg-gray-200 focus:bg-gray-200 cursor-pointer duration-200 border-b border-gray-200"
+                className="p-2 w-full text-left bg-gray-100 hover:bg-gray-200 focus:bg-gray-200 cursor-pointer duration-200 "
                 key={key}
                 onClick={() =>
                   handleClick(
@@ -74,8 +76,8 @@ const Search = ({
               </button>
             ))
           ) : (
-            <li className=" p-2 w-full text-center bg-gray-100  focus:bg-gray-200 border-b border-gray-200">
-              No data
+            <li className="h-full p-2 w-full flex items-center justify-center bg-gray-100  focus:bg-gray-200 ">
+              <Nodata width={80} height={80} textSize="text-sm" />
             </li>
           )}
         </ul>

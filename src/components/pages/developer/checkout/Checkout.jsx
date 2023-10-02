@@ -176,7 +176,7 @@ const Checkout = () => {
                     </div>
                     <div className="flex justify-center mt-10 gap-2">
                       <button
-                        className="btn btn--primary px-6 py-4"
+                        className="btn btn--primary px-6 py-4 w-32"
                         type="submit"
                         disabled={mutation.isLoading || !props.dirty}
                       >
