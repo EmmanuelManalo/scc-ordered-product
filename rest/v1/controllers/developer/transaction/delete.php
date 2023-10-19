@@ -19,7 +19,7 @@ if (array_key_exists("transactionId", $_GET)) {
     $transactionQty = checkIndex($item, "transaction_quantity");
     $transaction->transaction_updated_at = date("Y-m-d H:i:s");
 
-    $transaction->product_quantity = (int)$productQty + (int)$transactionQty;
+    $transaction->product_quantity = floatval($productQty) + floatval($transactionQty);
 
     checkUpdateProduct($transaction);
     $query = checkDelete($transaction);

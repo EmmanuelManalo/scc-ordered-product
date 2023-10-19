@@ -1,0 +1,29 @@
+UPLOAD
+
+*controllers   
+    - developer/transaction/delete.php
+    -
+    
+    
+*models     
+    - 
+    - 
+    -  
+    -  
+
+*htaccess 
+    - 
+
+
+*db tables   
+    - 
+    -  
+
+
+*core functions 
+    - 
+    -  
+
+*extra
+    - 
+    - 

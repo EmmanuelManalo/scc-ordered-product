@@ -202,15 +202,6 @@ const TransactionTable = ({ setItemEdit }) => {
                             </>
                           ) : (
                             <>
-                              {/* <li>
-                                <button
-                                  className="tooltip"
-                                  data-tooltip="edit"
-                                  onClick={() => handleEdit(item)}
-                                >
-                                  <FiEdit3 />
-                                </button>
-                              </li> */}
                               <li>
                                 <button
                                   className="tooltip"
