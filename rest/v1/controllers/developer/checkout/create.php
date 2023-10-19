@@ -35,7 +35,7 @@ $check_out->transaction_updated_at = date("Y-m-d H:i:s");
 
 $productQty = checkIndex($data, "productQty");
 
-$check_out->product_quantity = (int)$productQty -  (int)$check_out->transaction_quantity;
+$check_out->product_quantity = floatval($productQty) - floatval($check_out->transaction_quantity);
 
 if ($check_out->product_quantity < 0) {
     resultError("Insufficient quantity.");

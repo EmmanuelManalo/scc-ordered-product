@@ -2,6 +2,7 @@ UPLOAD
 
 *controllers   
     - developer/transaction/delete.php
+    - developer/checkout/create.php
     -
     
     
